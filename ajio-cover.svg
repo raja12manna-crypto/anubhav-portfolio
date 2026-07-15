@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+<radialGradient id="g1" cx="75%" cy="18%" r="85%"><stop offset="0%" stop-color="#221c33"/><stop offset="55%" stop-color="#12101c"/><stop offset="100%" stop-color="#0b0a12"/></radialGradient>
+</defs>
+<rect width="1600" height="1000" fill="url(#g1)"/>
+
+<text x="96" y="330" font-family="Space Grotesk" font-weight="bold" font-size="200" letter-spacing="12" fill="#ffffff">AJIO</text>
+<text x="100" y="410" font-family="Space Grotesk" font-size="48" fill="#d9d9e2">UX/UI Case Study</text>
+
+<rect x="100" y="462" width="452" height="56" rx="28" fill="none" stroke="#e8455a" stroke-width="2"/>
+<circle cx="128" cy="490" r="5" fill="#e8455a"/>
+<text x="146" y="498" font-family="JetBrains Mono" font-size="19" letter-spacing="3" fill="#e8455a">HUMAN-CENTRIC CHECKOUT</text>
+
+<text x="100" y="580" font-family="JetBrains Mono" font-size="18" letter-spacing="2" fill="#8a8a99">WEBSITE REDESIGN &#183; E-COMMERCE &#183; FASHION</text>
+
+<!-- browser mock -->
+<g transform="translate(820,150)">
+<rect x="0" y="0" width="690" height="700" rx="18" fill="#f6f6f4" stroke="#2a2a35" stroke-width="2"/>
+<rect x="0" y="0" width="690" height="46" rx="18" fill="#e7e7e3"/>
+<rect x="0" y="28" width="690" height="18" fill="#e7e7e3"/>
+<circle cx="30" cy="23" r="6" fill="#c9c9c4"/><circle cx="52" cy="23" r="6" fill="#c9c9c4"/><circle cx="74" cy="23" r="6" fill="#c9c9c4"/>
+
+<rect x="0" y="46" width="690" height="62" fill="#111116"/>
+<text x="28" y="86" font-family="Space Grotesk" font-weight="bold" font-size="25" letter-spacing="3" fill="#ffffff">AJIO</text>
+<rect x="128" y="62" width="335" height="32" rx="16" fill="#ffffff"/>
+<text x="148" y="84" font-family="JetBrains Mono" font-size="14" fill="#9a9aa4">What are you looking for?</text>
+<circle cx="514" cy="78" r="4" fill="#fff"/><circle cx="549" cy="78" r="4" fill="#fff"/><circle cx="584" cy="78" r="4" fill="#fff"/>
+<rect x="614" y="64" width="52" height="28" rx="14" fill="#ffffff"/>
+
+<text x="28" y="140" font-family="JetBrains Mono" font-size="13" letter-spacing="2" fill="#22222c">HOME&#160;&#160;&#160;MEN&#160;&#160;&#160;WOMEN&#160;&#160;&#160;KIDS&#160;&#160;&#160;BEAUTY</text>
+<rect x="28" y="150" width="52" height="3" fill="#111116"/>
+
+<rect x="28" y="172" width="634" height="130" rx="10" fill="#efe9e3"/>
+<rect x="52" y="196" width="152" height="82" rx="6" fill="#dcd3c9"/>
+<rect x="222" y="196" width="152" height="82" rx="6" fill="#d4dbd1"/>
+<rect x="436" y="200" width="132" height="34" rx="4" fill="#b5232a"/>
+<text x="453" y="223" font-family="Space Grotesk" font-weight="bold" font-size="17" fill="#ffffff">FLAT 75% OFF</text>
+<text x="436" y="262" font-family="JetBrains Mono" font-size="12" fill="#6d6d78">LAST CHANCE TO OWN THEM</text>
+
+<rect x="28" y="326" width="199" height="188" rx="10" fill="#ffffff" stroke="#e2e2dd"/>
+<rect x="44" y="342" width="167" height="110" rx="6" fill="#e9ded2"/>
+<rect x="44" y="464" width="112" height="12" rx="6" fill="#d4d4cf"/><rect x="44" y="484" width="72" height="12" rx="6" fill="#b5232a"/>
+<rect x="246" y="326" width="199" height="188" rx="10" fill="#ffffff" stroke="#e2e2dd"/>
+<rect x="262" y="342" width="167" height="110" rx="6" fill="#d7e0ea"/>
+<rect x="262" y="464" width="112" height="12" rx="6" fill="#d4d4cf"/><rect x="262" y="484" width="72" height="12" rx="6" fill="#b5232a"/>
+<rect x="464" y="326" width="199" height="188" rx="10" fill="#ffffff" stroke="#e2e2dd"/>
+<rect x="480" y="342" width="167" height="110" rx="6" fill="#dfd8e6"/>
+<rect x="480" y="464" width="112" height="12" rx="6" fill="#d4d4cf"/><rect x="480" y="484" width="72" height="12" rx="6" fill="#b5232a"/>
+
+<rect x="28" y="538" width="634" height="122" rx="12" fill="#eef3e4"/>
+<text x="52" y="583" font-family="Space Grotesk" font-weight="bold" font-size="21" fill="#22222c">Instant Checkout</text>
+<text x="52" y="611" font-family="JetBrains Mono" font-size="13" fill="#6d6d78">3 steps &#8594; 1 screen &#183; AJIO Paylater</text>
+<rect x="408" y="566" width="230" height="56" rx="28" fill="#c9382f"/>
+<text x="438" y="601" font-family="Space Grotesk" font-weight="bold" font-size="19" fill="#ffffff">Checkout &#8226; &#8377;3,250</text>
+</g>
+</svg>

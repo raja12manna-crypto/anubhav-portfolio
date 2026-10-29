@@ -177,6 +177,77 @@
     body{cursor:auto}.cursor,.cursor-dot,.trail,.spotlight,.grain{display:none}
     .hero-photo,.hero-eyebrow,.hero-sub,.hero-meta{opacity:1;transform:none}
   }
+
+  /* ---------- Ask-Anubhav assistant ---------- */
+  .am-ai{--ai-bg:#101017;--ai-fg:#f4f4f8;--ai-mute:#9a9aab;--ai-line:rgba(255,255,255,.11);--ai-card:rgba(255,255,255,.05);
+         position:fixed;right:24px;bottom:24px;z-index:9000;font-family:var(--sans)}
+  .am-ai button,.am-ai input{font:inherit;color:inherit}
+  .am-ai-btn{display:flex;align-items:center;gap:10px;padding:13px 20px 13px 16px;border-radius:100px;border:1px solid rgba(109,92,255,.55);
+             background:rgba(16,16,23,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;cursor:pointer;
+             font-family:var(--mono);font-size:12px;letter-spacing:.6px;box-shadow:0 18px 40px -18px rgba(109,92,255,.7);
+             transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+  .am-ai-btn:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 24px 50px -18px rgba(109,92,255,.9)}
+  .am-ai-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .am-orb{position:relative;width:22px;height:22px;border-radius:50%;flex:none;
+          background:radial-gradient(circle at 35% 30%,#fff 0 8%,var(--accent) 30%,var(--accent-2) 75%);
+          box-shadow:0 0 14px rgba(109,92,255,.9);animation:amPulse 2.8s var(--ease) infinite}
+  @keyframes amPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  .am-ai-btn .am-x{display:none;font-size:16px;line-height:1}
+  .am-ai.open .am-ai-btn .am-x{display:inline}
+  .am-ai.open .am-ai-btn .am-btn-txt{display:none}
+
+  .am-panel{position:absolute;right:0;bottom:64px;width:min(390px,calc(100vw - 32px));height:min(580px,calc(100vh - 120px));
+            display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--ai-line);overflow:hidden;
+            background:rgba(16,16,23,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--ai-fg);
+            box-shadow:0 40px 90px -30px rgba(0,0,0,.75),0 0 0 1px rgba(109,92,255,.08);
+            opacity:0;transform:translateY(16px) scale(.97);transform-origin:bottom right;pointer-events:none;visibility:hidden;
+            transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s linear .35s}
+  .am-ai.open .am-panel{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .am-head{display:flex;align-items:center;gap:12px;padding:16px 16px 14px 18px;border-bottom:1px solid var(--ai-line);
+           background:linear-gradient(180deg,rgba(109,92,255,.12),transparent)}
+  .am-head .am-orb{width:30px;height:30px}
+  .am-title{font-family:var(--serif);font-size:1.12rem;letter-spacing:-.01em;line-height:1.1}
+  .am-sub{font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--ai-mute);margin-top:3px}
+  .am-sub i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#3ddc97;margin-right:6px;vertical-align:1px}
+  .am-close{margin-left:auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--ai-line);background:transparent;cursor:pointer;
+            font-size:15px;line-height:1;transition:background .25s,border-color .25s}
+  .am-close:hover{background:var(--ai-card);border-color:var(--accent)}
+  .am-log{position:relative;flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;overscroll-behavior:contain}
+  .am-log::-webkit-scrollbar{width:6px}.am-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:6px}
+  .am-msg{max-width:88%;font-size:14px;line-height:1.55;padding:11px 14px;border-radius:16px;animation:amIn .35s var(--ease) both;word-wrap:break-word}
+  @keyframes amIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .am-bot{align-self:flex-start;background:var(--ai-card);border:1px solid var(--ai-line);border-bottom-left-radius:5px}
+  .am-user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#5848e6);color:#fff;border-bottom-right-radius:5px}
+  .am-bot b{font-weight:600;color:#fff}
+  .am-bot a{color:#a99fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(169,159,255,.45)}
+  .am-bot a:hover{color:#fff}
+  .am-bot ul{margin:6px 0 2px;padding-left:18px}.am-bot li{margin:3px 0}
+  .am-typing{display:flex;gap:5px;padding:14px 16px}
+  .am-typing i{width:6px;height:6px;border-radius:50%;background:var(--ai-mute);animation:amDot 1s infinite}
+  .am-typing i:nth-child(2){animation-delay:.15s}.am-typing i:nth-child(3){animation-delay:.3s}
+  @keyframes amDot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+  .am-chips{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:2px 0 6px;animation:amIn .35s var(--ease) both}
+  .am-chips.am-old{opacity:.55}
+  .am-chips-l{font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--ai-mute);text-transform:uppercase;margin-right:2px}
+  .am-chip{border:1px solid rgba(109,92,255,.45);background:rgba(109,92,255,.08);color:#d9d5ff;border-radius:100px;padding:7px 12px;
+           font-size:12.5px !important;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+  .am-chip:hover,.am-chip:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff;outline:none}
+  .am-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--ai-line)}
+  .am-form input{flex:1;min-width:0;background:rgba(255,255,255,.06);border:1px solid var(--ai-line);border-radius:100px;padding:12px 16px;
+                 font-size:14px !important;outline:none;cursor:text;transition:border-color .25s}
+  .am-form input::placeholder{color:var(--ai-mute)}
+  .am-form input:focus{border-color:var(--accent)}
+  .am-send{width:44px;height:44px;flex:none;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;font-size:17px;
+           transition:transform .25s var(--ease),background .25s}
+  .am-send:hover{transform:scale(1.06);background:#7b6cff}
+  .am-foot{font-family:var(--mono);font-size:9.5px;letter-spacing:.4px;color:var(--ai-mute);text-align:center;padding:0 12px 10px}
+  @media (hover:hover){.am-ai,.am-ai *{cursor:none!important}}
+  @media(max-width:560px){
+    .am-ai{right:16px;bottom:16px}
+    .am-ai-btn{padding:12px 16px 12px 13px}
+    .am-panel{position:fixed;left:8px;right:8px;bottom:80px;width:auto;height:min(72vh,600px)}
+    .am-form input{font-size:16px !important}
+  }
 </style>
 </head>
 <body>
@@ -215,7 +286,7 @@
         <span class="line"><span class="inner"><span class="word">that</span> <span class="word">feel</span> <span class="word"><em>inevitable.</em></span></span></span>
       </h1>
       <p class="hero-sub" id="heroSub">
-        <strong>4+ years</strong> in design craft — motion, brand &amp; visual — evolved into <strong>2+ years</strong> of product &amp; UX design across B2B SaaS, drone mission control, and research. Currently designing at <strong>Anarix.ai</strong>.
+        <strong>6+ years</strong> in design — <strong>3.6 years</strong> as a designer &amp; design lead in motion, brand &amp; visual, then <strong>2.6 years</strong> of product &amp; UX design across AI-native B2B SaaS, drone mission control, and research. Most recently at <strong>Anarix.ai</strong> — now open to new roles.
       </p>
     </div>
     <div class="hero-photo" id="heroPhoto">
@@ -236,12 +307,13 @@
         <p class="about-lead reveal">I'm <b>Anubhaveshwar Manna</b> — a product designer and UX researcher who asks <b>why</b> before <b>how</b>, working where human-centred design, interaction, and systems thinking meet.</p>
         <div class="stat-row">
           <div class="stat reveal" data-d="1"><div class="n" data-count="6" data-suffix="+">0</div><div class="l">Years in design</div></div>
-          <div class="stat reveal" data-d="2"><div class="n" data-count="2" data-suffix="+">0</div><div class="l">Years in product/UX</div></div>
+          <div class="stat reveal" data-d="1"><div class="n" data-count="3.6">0</div><div class="l">Years as designer / design lead</div></div>
+          <div class="stat reveal" data-d="2"><div class="n" data-count="2.6">0</div><div class="l">Years in product / UX</div></div>
           <div class="stat reveal" data-d="3"><div class="n" data-count="30" data-suffix="%">0</div><div class="l">Faster task completion</div></div>
         </div>
       </div>
       <div class="about-body reveal" data-d="1">
-        <p>My path runs from a BFA in Visual Communication to an M.Des in Experience Design at NIFT Bengaluru. The first four years were motion, brand, and visual craft; the last two-plus have been end-to-end product and UX — B2B SaaS dashboards, drone mission-control interfaces, and hands-on research.</p>
+        <p>My path runs from a BFA in Visual Communication to an M.Des in Experience Design at NIFT Bengaluru. The first 3.6 years were motion, brand, and visual craft, including a design-lead role; the last 2.6 have been end-to-end product and UX — B2B SaaS dashboards, drone mission-control interfaces, and hands-on research.</p>
         <p>Outside of screens: I play guitar and sing, swim, and sketch while travelling. I'll also happily argue that serif fonts deserve more respect in product design.</p>
       </div>
     </div>
@@ -312,9 +384,9 @@
     <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">Where I've built things</h2></div>
     <div class="exp">
       <div class="exp-item reveal">
-        <div class="exp-when">Aug 2024 — Present</div>
+        <div class="exp-when">Aug 2024 — Aug 2026</div>
         <div><div class="exp-role">Product Designer</div><div class="exp-co">Anarix.ai · Bengaluru</div>
-        <p class="exp-desc">Leading end-to-end design of a B2B SaaS dashboard for Amazon Marketing Cloud users. Built a scalable Figma design system; reduced task completion time 30%, improved feature adoption 25%, shipped MVP in 3 months.</p></div>
+        <p class="exp-desc">Led end-to-end design of a B2B SaaS dashboard for Amazon Marketing Cloud users. Built a scalable Figma design system; reduced task completion time 30%, improved feature adoption 25%, shipped MVP in 3 months.</p></div>
       </div>
       <div class="exp-item reveal">
         <div class="exp-when">Jul 2024 — Aug 2024</div>
@@ -405,6 +477,29 @@
   <span>Bengaluru, India</span>
 </footer>
 
+<!-- ===== Ask-Anubhav assistant (answers from the knowledge base in the last <script>) ===== -->
+<div class="am-ai" id="amAI">
+  <div class="am-panel" id="amAIPanel" role="dialog" aria-label="Ask about Anubhav" aria-hidden="true">
+    <div class="am-head">
+      <span class="am-orb" aria-hidden="true"></span>
+      <div>
+        <div class="am-title">Ask about Anubhav</div>
+        <div class="am-sub"><i></i>Instant answers about his work</div>
+      </div>
+      <button type="button" class="am-close" id="amAIClose" aria-label="Close assistant">✕</button>
+    </div>
+    <div class="am-log" id="amAILog" role="log" aria-live="polite"></div>
+    <form class="am-form" id="amAIForm" autocomplete="off">
+      <input id="amAIInput" type="text" maxlength="200" placeholder="Type a question…" aria-label="Your question" />
+      <button type="submit" class="am-send" aria-label="Send">↑</button>
+    </form>
+    <div class="am-foot">Answers come from Anubhav's own notes · not a live AI</div>
+  </div>
+  <button type="button" class="am-ai-btn" id="amAIBtn" aria-expanded="false" aria-controls="amAIPanel" data-hover>
+    <span class="am-orb" aria-hidden="true"></span><span class="am-btn-txt">Ask about me</span><span class="am-x" aria-hidden="true">✕</span>
+  </button>
+</div>
+
 <script>
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const hoverable=matchMedia('(hover:hover)').matches;
@@ -474,8 +569,8 @@ addEventListener('load',()=>{
 
 (function(){
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
-    e.target.querySelectorAll('[data-count]').forEach(el=>{const target=+el.dataset.count,suf=el.dataset.suffix||'';let n=0;
-      const step=()=>{n+=Math.max(1,Math.ceil(target/28));if(n>=target)n=target;el.textContent=n+suf;if(n<target)requestAnimationFrame(step);};step();});
+    e.target.querySelectorAll('[data-count]').forEach(el=>{const target=+el.dataset.count,suf=el.dataset.suffix||'',dec=(el.dataset.count.split('.')[1]||'').length;let n=0;
+      const step=()=>{n+=Math.max(dec?target/28:1,dec?0:Math.ceil(target/28));if(n>=target)n=target;el.textContent=n.toFixed(dec)+suf;if(n<target)requestAnimationFrame(step);};step();});
     io.unobserve(e.target);}});},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
@@ -541,6 +636,439 @@ addEventListener('load',()=>{
     requestAnimationFrame(draw);}
   if(!reduce)draw();else{ctx.fillStyle='#0a0a0f';ctx.fillRect(0,0,w,h);}
 })();
+</script>
+<script>
+/* =====================================================================
+   ASK-ANUBHAV ASSISTANT — KNOWLEDGE BASE
+   Edit answers here. Each entry:
+     id     unique name
+     k      keywords / phrases that point to this answer (typos are tolerated)
+     q      example questions (help matching)
+     a      the answer (HTML allowed)
+     next   ids of follow-up suggestions shown as buttons
+   ===================================================================== */
+const AM_LINKS={
+  email:'raja12manna@gmail.com',
+  linkedin:'https://www.linkedin.com/in/anubhav-manna-069419177',
+  behance:'https://www.behance.net/Anubhavmanna',
+  whatsapp:'https://wa.me/919654690346',
+  phone:'+91 96546 90346'
+};
+const L=(href,txt)=>`<a href="${href}" target="_blank" rel="noopener">${txt}</a>`;
+const MAIL=(subject,txt)=>`<a href="mailto:${AM_LINKS.email}?subject=${encodeURIComponent(subject)}">${txt||AM_LINKS.email}</a>`;
+
+const AM_KB=[
+/* ---------- who / overview ---------- */
+{id:'about',
+ k:['who','about','introduce','introduction','summary','overview','background','tell me about him','anubhav','anubhaveshwar','manna','himself','what does he do','designer'],
+ q:['who is anubhav','tell me about yourself','what does he do','give me a quick summary','introduce him'],
+ a:`<b>Anubhaveshwar Manna</b> (Anubhav) is a <b>product designer and UX researcher</b> based in Bengaluru with <b>6+ years in design</b>:
+ <ul><li><b>3.6 years</b> as a designer &amp; design lead — motion, brand, visual and content design</li>
+ <li><b>2.6 years</b> as a product designer, UI/UX designer and researcher</li></ul>
+ He's worked on AI-native B2B SaaS, drone mission-control interfaces, fintech, e-commerce and educational games. His approach: ask <i>why</i> before <i>how</i>.`,
+ next:['status','projects','experience']},
+
+{id:'status',
+ k:['open to work','available','availability','hiring','hire','looking','job','jobs','opportunity','opportunities','currently','current','right now','now','status','free','join','employment','unemployed','working now','where does he work'],
+ q:['is he open to work','is he looking for a job','where is he working now','is he available','can we hire him','what is he doing currently'],
+ a:`Yes — Anubhav is <b>open to work</b>. He left Anarix.ai in <b>August 2026</b> and is now focused full-time on his next role.
+ <br><br>He's looking for <b>Senior UX Designer, Product Designer and UI/UX Designer</b> roles across design, branding, UI/UX and product design — in private companies as well as public-sector and government organisations.
+ <br><br>Meanwhile he's building ${'<b>INDIEFOLKS</b>'}, a community platform for craft artisans, and writing a craft research paper.`,
+ next:['roles','why','contact']},
+
+{id:'roles',
+ k:['role','roles','position','positions','title','designation','kind of job','type of role','what job','senior','lead','ux designer','product designer','ui ux','government','public sector','psu'],
+ q:['what roles is he looking for','which positions interest him','what kind of job does he want','is he open to government jobs'],
+ a:`He's targeting:
+ <ul><li><b>Senior UX Designer</b></li><li><b>Product Designer</b></li><li><b>UI/UX Designer</b></li></ul>
+ Broader areas: product design, UX research, design systems, branding and AI-driven product experiences. Both private industry and public-sector / government roles are in scope.`,
+ next:['relocation','salary','contact']},
+
+{id:'relocation',
+ k:['relocate','relocation','move','shift','location','based','live','lives','city','where is he','bengaluru','bangalore','india','abroad','gulf','dubai','uae','saudi','qatar','middle east','international','overseas','remote','onsite','hybrid','country'],
+ q:['where is he based','is he willing to relocate','can he move to dubai','does he work remotely','is he open to working abroad'],
+ a:`Anubhav is <b>based in Bengaluru, India</b> and is <b>willing to relocate</b> — within India or abroad, including <b>Gulf countries</b>.
+ <br><br>For remote or hybrid setups, ${MAIL('Role enquiry','drop him an email')} with the details.`,
+ next:['status','salary','contact']},
+
+{id:'salary',
+ k:['salary','ctc','compensation','pay','package','lpa','lakh','expected','expectation','rate','money','budget','charges','fee'],
+ q:['what is his expected salary','what ctc does he expect','what are his salary expectations'],
+ a:`His expected compensation starts from <b>₹12 LPA</b>, depending on the role, scope and location. He's happy to discuss specifics directly — ${MAIL('Role and compensation','email him')}.`,
+ next:['notice','contact']},
+
+{id:'notice',
+ k:['notice','notice period','join','joining','start','when can he start','immediate','immediately','serving'],
+ q:['what is his notice period','when can he join','can he join immediately'],
+ a:`He's currently <b>between roles</b> (he left Anarix.ai in August 2026), so he can start soon. Confirm exact dates with him at ${MAIL('Joining date')}.`,
+ next:['contact','salary']},
+
+/* ---------- experience ---------- */
+{id:'experience',
+ k:['experience','work history','career','companies','company','worked','previous','past','jobs done','timeline','years','how many years','how long','journey'],
+ q:['what is his work experience','where has he worked','how many years of experience does he have','show his career timeline'],
+ a:`<b>6+ years</b> total (3.6 years designer / design lead + 2.6 years product / UX):
+ <ul>
+ <li><b>Product Designer</b> — Anarix.ai, Bengaluru · Aug 2024 – Aug 2026</li>
+ <li><b>UX / Product Design Intern</b> — Pepper Square · Jul – Aug 2024</li>
+ <li><b>UX Designer &amp; Researcher</b> (grad project) — ideaForge · Jan – Jun 2024</li>
+ <li><b>UX Research Intern</b> — Bosch Global Software Technologies · Apr – Jun 2023</li>
+ <li><b>Content &amp; Design Lead</b> — EESL, Delhi · 2021 – 2022</li>
+ <li><b>Graphic &amp; UI Designer</b> (freelance) — Unacademy / Marcoms Avenue · 2020 – 2021</li>
+ <li><b>Visual Designer, Motion &amp; UI</b> — Dastan Productions, Delhi · 2018 – 2020</li>
+ </ul>Ask about any company for details.`,
+ next:['anarix','ideaforge','education']},
+
+{id:'anarix',
+ k:['anarix','anarix ai','last job','last company','recent job','most recent','saas','b2b','amazon','walmart','marketplace','amazon marketing cloud','amc','dashboard','enterprise'],
+ q:['what did he do at anarix','tell me about his last job','what was his work at anarix'],
+ a:`<b>Product Designer at Anarix.ai</b>, Bengaluru (Aug 2024 – Aug 2026) — an AI-native B2B SaaS company serving marketplace sellers.
+ <ul><li>Led end-to-end design of a <b>B2B enterprise dashboard</b> for Amazon Marketing Cloud users</li>
+ <li>Built a scalable <b>Figma design system</b> and ran usability testing</li>
+ <li>Designed AI-driven product experiences as the company moved toward an AI-first product</li>
+ <li>Impact: <b>30% faster</b> task completion, <b>25%</b> higher feature adoption, MVP shipped in <b>3 months</b></li></ul>
+ Because of an NDA he can't show screens or product details publicly, but he's glad to walk through his process and approach in a conversation.`,
+ next:['ai','designsystem','experience']},
+
+{id:'pepper',
+ k:['pepper square','pepper','pepper square intern'],
+ q:['what did he do at pepper square'],
+ a:`<b>UX / Product Design Intern at Pepper Square</b>, Bengaluru (Jul – Aug 2024). He contributed to product design and UX optimisation work, collaborating with design and product teams on artifacts and experience improvements.`,
+ next:['anarix','experience']},
+
+{id:'ideaforge',
+ k:['ideaforge','idea forge','drone','drones','uav','mission control','geo tagging','geotagging','surveillance','logistics','graduation project','thesis','final project'],
+ q:['what was his graduation project','what did he do at ideaforge','has he worked on drones'],
+ a:`<b>UX Designer &amp; Researcher at ideaForge Technologies</b> (Jan – Jun 2024) — his M.Des graduation project.
+ He designed operator workflows and mobile interfaces for <b>drone geo-tagging mission control</b>, used in surveillance and logistics, backed by field research, contextual inquiry, heuristic evaluation and affinity mapping with real operators.
+ <br><br>His later concept ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} extends this drone-operations thinking.`,
+ next:['missionassurance','research','experience']},
+
+{id:'bosch',
+ k:['bosch','bgsw','bosch global'],
+ q:['what did he do at bosch'],
+ a:`<b>UX Research Intern at Bosch Global Software Technologies</b>, Bengaluru (Apr – Jun 2023). He did competitive analysis and qualitative research on B2B lead-acquisition journeys and proposed design strategies that contributed to conversion improvements.`,
+ next:['research','experience']},
+
+{id:'eesl',
+ k:['eesl','energy efficiency services','energy efficiency','psu work','government experience','content lead','design lead'],
+ q:['what did he do at eesl','has he worked with the government'],
+ a:`<b>Content &amp; Design Lead at Energy Efficiency Services Limited (EESL)</b>, Delhi (2021 – 2022) — a government-backed energy services company. He led design and content strategy for brand communication and structured workflows that improved delivery timelines by <b>30%</b>.`,
+ next:['branding','experience']},
+
+{id:'unacademy',
+ k:['unacademy','marcoms','marcoms avenue','freelance work','freelancing'],
+ q:['did he work with unacademy','what freelance work has he done'],
+ a:`<b>Graphic &amp; UI Designer (freelance)</b> for Unacademy and Marcoms Avenue (2020 – 2021). Branded digital content, micro-animations and UI concepts for education and marketing clients, including a contract-to-hire project for Unacademy on collateral design and brand strategy.`,
+ next:['branding','experience']},
+
+{id:'dastan',
+ k:['dastan','dastan productions','film','films','ott','after effects','animation','motion','motion graphics','motion design','video','video editing','sound','sound design','editing'],
+ q:['does he do motion design','what did he do at dastan','can he edit videos'],
+ a:`Motion is his foundation. As <b>Visual Designer — Motion &amp; UI at Dastan Productions</b>, Delhi (Jul 2018 – Sep 2020), he created brand identities, social content and motion graphics for independent films and OTT projects, animating in <b>After Effects</b>.
+ <br><br>Today that shows up in his UI micro-interactions, plus <b>video editing</b> and <b>sound design</b> for his craft documentaries.`,
+ next:['branding','indiefolks','skills']},
+
+/* ---------- education & awards ---------- */
+{id:'education',
+ k:['education','study','studied','college','university','degree','qualification','masters','master','mdes','m des','bfa','bachelor','nift','college of art','graduate','graduation','school'],
+ q:['where did he study','what is his education','which degree does he have','is he from nift'],
+ a:`<ul><li><b>M.Des, Experience Design (UI/UX)</b> — NIFT Bengaluru, 2022 – 2024</li>
+ <li><b>BFA, Visual Communication</b> — College of Art, New Delhi, 2014 – 2018</li></ul>`,
+ next:['award','experience']},
+
+{id:'award',
+ k:['award','awards','achievement','achievements','won','winner','competition','prize','recognition','ifp','poster'],
+ q:['has he won any awards','what are his achievements'],
+ a:`🏆 <b>Winner, IFP Poster Design Crossover Competition</b> (2021). On the product side, his work at Anarix.ai delivered 30% faster task completion and 25% higher feature adoption.`,
+ next:['projects','education']},
+
+/* ---------- projects ---------- */
+{id:'projects',
+ k:['projects','project','portfolio','work samples','case study','case studies','samples','selected work','show work','his work','best work','behance','prototype','prototypes'],
+ q:['show me his projects','what has he designed','can i see his case studies','what is his best work'],
+ a:`Selected work:
+ <ul>
+ <li>${L('https://raja12manna-crypto.github.io/missionassurance/','<b>Mission Assurance</b>')} — AI mission-validation platform for drone operations (end-to-end concept + prototype)</li>
+ <li>${L('https://raja12manna-crypto.github.io/canarabank/','<b>Canara Bank Super App</b>')} — banking UI redesign</li>
+ <li>${L('https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO','<b>AJIO</b>')} — human-centric checkout UX</li>
+ <li>${L('https://raja12manna-crypto.github.io/eod/','<b>EOD — Element of Design</b>')} — digital card game</li>
+ <li>${L('https://raja12manna-crypto.github.io/gamerama/','<b>RAMA</b>')} — mythical-retro game</li>
+ </ul>More on ${L(AM_LINKS.behance,'Behance')}.`,
+ next:['missionassurance','canara','games']},
+
+{id:'missionassurance',
+ k:['mission assurance','mission','health score','before landing','re flight','reflight','validation','ai platform'],
+ q:['tell me about mission assurance','what is mission assurance'],
+ a:`${L('https://raja12manna-crypto.github.io/missionassurance/','<b>Mission Assurance</b>')} — an independent AI mission-validation concept for drone operations, taken from public research → strategy → design system → a fully interactive prototype.
+ Key ideas: <b>one mission health score</b>, <b>evidence-backed AI recommendations</b>, and a <b>Before-Landing Review</b> that catches problems before a costly re-flight.`,
+ next:['ai','ideaforge','projects']},
+
+{id:'canara',
+ k:['canara','canara bank','bank','banking','fintech','super app','finance','mobile banking','ai1'],
+ q:['tell me about the canara bank project','has he done fintech work'],
+ a:`${L('https://raja12manna-crypto.github.io/canarabank/','<b>Canara Bank Super App — UI Redesign</b>')}: reimagining banking UX for one of India's largest public-sector banks — simplifying complex financial workflows and bringing clarity to everyday interactions. Includes a digital case study and prototype.`,
+ next:['ajio','projects']},
+
+{id:'ajio',
+ k:['ajio','checkout','e commerce','ecommerce','shopping','retail','fashion','cart'],
+ q:['tell me about the ajio case study','has he done ecommerce design'],
+ a:`${L('https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO','<b>AJIO — Human-Centric Checkout</b>')}: a redesign tackling pain points across browsing, discovery and checkout to reduce friction on the path to purchase.`,
+ next:['canara','projects']},
+
+{id:'games',
+ k:['game','games','gaming','game design','game ux','eod','element of design','card game','rama','ramayana','mythology','mythical','retro','play'],
+ q:['has he made games','tell me about his games','what is eod','what is rama'],
+ a:`Two playable projects:
+ <ul><li>${L('https://raja12manna-crypto.github.io/eod/','<b>EOD — Element of Design</b>')}: a digital card game that helps students from outside design learn industry design terminology without the memorisation stress.</li>
+ <li>${L('https://raja12manna-crypto.github.io/gamerama/','<b>RAMA</b>')}: a mythical-retro game that teaches Gen-Z Indian mythological stories and gives millennials and elders a nostalgic experience.</li></ul>
+ Skills here: game design, game UX, game architecture, character illustration and storytelling.`,
+ next:['projects','skills']},
+
+/* ---------- craft venture & research ---------- */
+{id:'indiefolks',
+ k:['indiefolks','indie folks','craft','crafts','artisan','artisans','weaver','weavers','weaving','saree','sarees','silk','kanchipuram','kanjivaram','kanjeevaram','handloom','textile','documentary','documentaries','community','ngo','venture','side project'],
+ q:['what is indiefolks','what is he building now','does he work with artisans','tell me about his craft work'],
+ a:`<b>INDIEFOLKS</b> is a community platform for Indian craft artisans that Anubhav is building with a small team. The idea goes back to 2018; the current version started in April 2026.
+ <br><br>It combines <b>craft documentation</b> (films and interviews with artisans), <b>research</b>, and <b>direct market links</b> so artisans get more exposure and better earnings. Current focus: <b>Kanchipuram silk weaving</b>.
+ <br><br>His role covers design, development, shoots, scripts, the research paper, and the brand and website. For collaborations, sponsorship or partnerships: ${MAIL('INDIEFOLKS collaboration')}.`,
+ next:['research','dastan','contact']},
+
+{id:'research',
+ k:['research','researcher','ux research','user research','paper','research paper','publication','interviews','interview','fieldwork','field research','contextual inquiry','usability','usability testing','heuristic','affinity','methods','methodology'],
+ q:['does he do user research','what research methods does he use','is he writing a research paper'],
+ a:`Research is core to how he works. Methods he uses: <b>field research, contextual inquiry, interviews, usability testing, heuristic evaluation, affinity mapping</b> and competitive analysis — with drone operators at ideaForge, B2B journeys at Bosch, and users at Anarix.ai.
+ <br><br>He's also writing a <b>research paper on Kanchipuram silk craft</b> as part of INDIEFOLKS, based on fieldwork with artisans.`,
+ next:['indiefolks','process','ideaforge']},
+
+/* ---------- skills ---------- */
+{id:'skills',
+ k:['skills','skill','tools','tool','software','stack','expertise','good at','capabilities','proficient','figma','prototyping','wireframing','wcag','accessibility','information architecture','interaction design','mobile first'],
+ q:['what are his skills','which tools does he use','is he good at figma','what is he expert in'],
+ a:`<b>Core:</b> product design, UX research, interaction design, design systems, information architecture, prototyping, wireframing, usability testing, mobile-first UX, accessibility (WCAG 2.1).
+ <br><b>Tools:</b> Figma (expert), After Effects, video editing.
+ <br><b>Also:</b> AI workflows &amp; prompt engineering, motion graphics &amp; micro-interactions, brand identity, game design &amp; game UX, character illustration, storytelling, sound design, design sprints, Agile/Scrum.`,
+ next:['ai','designsystem','process']},
+
+{id:'ai',
+ k:['ai','artificial intelligence','ai design','ai products','ai experience','llm','gen ai','genai','generative','chatbot','prompt','prompt engineering','machine learning','ml','automation','agentic'],
+ q:['has he designed ai products','does he have ai experience','can he design for ai'],
+ a:`Yes. He spent two years at <b>Anarix.ai</b>, an AI-native B2B SaaS company, designing AI-driven product experiences as the product moved toward being AI-first (details are under NDA). He also works with <b>AI workflows and prompt engineering</b>, and his ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} concept is built around evidence-backed AI recommendations.`,
+ next:['anarix','missionassurance','skills']},
+
+{id:'designsystem',
+ k:['design system','design systems','components','component library','tokens','ui kit','style guide','scalable'],
+ q:['has he built a design system','does he have design system experience'],
+ a:`Yes — at Anarix.ai he <b>built and owned a scalable Figma design system</b> for an enterprise B2B dashboard, which helped the team ship an MVP in 3 months. His Mission Assurance concept also includes its own design system.`,
+ next:['anarix','skills']},
+
+{id:'branding',
+ k:['branding','brand','brand identity','logo','graphic design','graphics','visual design','visual','poster','illustration','content design','social media'],
+ q:['does he do branding','can he do graphic design','has he designed logos'],
+ a:`Yes — his first 3.6 years were in <b>visual, brand and motion design</b>: brand identities and social content at Dastan Productions, brand communication as Content &amp; Design Lead at EESL, and brand strategy and collateral for Unacademy. He won the <b>IFP Poster Design Crossover Competition</b> in 2021.`,
+ next:['dastan','eesl','projects']},
+
+{id:'process',
+ k:['process','approach','how does he work','methodology','workflow','philosophy','design thinking','why before how','way of working'],
+ q:['what is his design process','how does he approach a problem','what is his design philosophy'],
+ a:`He asks <b>why before how</b>. A typical arc: research the real problem (field visits, interviews, data) → define the strategy and success metrics → build the system (IA, flows, design system) → prototype and test with users → iterate. His ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} case study shows that whole arc end to end.`,
+ next:['research','projects']},
+
+{id:'why',
+ k:['why hire','why should','why him','hire him','good fit','fit','stand out','unique','different','best candidate','strengths','strength','value','bring','offer','usp'],
+ q:['why should we hire him','what makes him different','is he a good fit for our team','what are his strengths'],
+ a:`What he brings:
+ <ul><li><b>Craft + product in one person</b> — 3.6 years of visual, brand and motion design behind 2.6 years of product and UX, so his work is both well-reasoned and well-made.</li>
+ <li><b>Research-led</b> — field studies with drone operators, B2B research at Bosch, and ongoing ethnographic work with artisans.</li>
+ <li><b>AI-native product experience</b> — two years designing for an AI-first B2B SaaS product.</li>
+ <li><b>Systems thinking</b> — built a design system and shipped an enterprise MVP in 3 months, with 30% faster task completion.</li>
+ <li><b>He builds</b> — playable games, interactive prototypes and documentaries.</li></ul>`,
+ next:['projects','ai','contact']},
+
+{id:'code',
+ k:['code','coding','coder','develop','developer','development','programming','frontend','front end','html','css','javascript','react','build','builds','technical','engineer'],
+ q:['can he code','does he know react','does he develop websites','is he technical'],
+ a:`He's a designer first, but he also builds: this portfolio, his browser games ${L('https://raja12manna-crypto.github.io/eod/','EOD')} and ${L('https://raja12manna-crypto.github.io/gamerama/','RAMA')}, and interactive prototypes like ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} are all live on the web, and he handles development for the INDIEFOLKS website. For specific frameworks, ${MAIL('Technical skills question','ask him directly')}.`,
+ next:['games','skills']},
+
+/* ---------- personal ---------- */
+{id:'hobbies',
+ k:['hobby','hobbies','interests','interest','free time','spare time','do in free time','do in his free time','weekend','weekends','fun','personal','outside work','guitar','music','sing','singing','vocals','swim','swimming','travel','travelling','traveling','sketch','sketching','fonts','serif'],
+ q:['what are his hobbies','what does he do for fun','what are his interests'],
+ a:`Outside screens he plays <b>guitar and sings</b>, <b>swims</b>, <b>travels</b> and <b>sketches</b> on the way. He'll also happily argue that serif fonts deserve more respect in product design.`,
+ next:['about','contact']},
+
+/* ---------- contact ---------- */
+{id:'contact',
+ k:['contact','reach','email','mail','phone','number','call','whatsapp','linkedin','connect','message','get in touch','talk','meet','schedule','interview him'],
+ q:['how can i contact him','what is his email','can i call him','how do i reach anubhav'],
+ a:`<ul><li>✉️ Email: ${MAIL('Hello Anubhav')}</li>
+ <li>📞 Phone / WhatsApp: ${L(AM_LINKS.whatsapp,AM_LINKS.phone)}</li>
+ <li>💼 ${L(AM_LINKS.linkedin,'LinkedIn')} · 🎨 ${L(AM_LINKS.behance,'Behance')}</li></ul>`,
+ next:['resume','status']},
+
+{id:'resume',
+ k:['resume','cv','curriculum vitae','biodata','download','pdf'],
+ q:['can i get his resume','where is his cv','download cv'],
+ a:`He shares his latest CV on request — ${MAIL('CV request','email him')} or message him on ${L(AM_LINKS.linkedin,'LinkedIn')} and he'll send it over.`,
+ next:['contact','experience']},
+
+{id:'freelance',
+ k:['freelance','freelancer','contract','consulting','consultant','collaborate','collaboration','partner','partnership','side gig','commission','sponsor','sponsorship'],
+ q:['does he take freelance work','can we collaborate','is he available for a contract project'],
+ a:`For freelance, contract or collaboration enquiries, ${MAIL('Project enquiry','email him')} with a short brief — scope, timeline and what you need. For craft-related partnerships, mention INDIEFOLKS.`,
+ next:['contact','indiefolks']},
+
+/* ---------- small talk ---------- */
+{id:'hello',
+ k:['hi','hello','hey','hii','hiii','namaste','good morning','good evening','good afternoon','yo','sup'],
+ q:['hi','hello there'],
+ a:`Hi! 👋 Ask me anything about Anubhav's work, experience, projects or availability.`,
+ next:['about','status','projects']},
+
+{id:'thanks',
+ k:['thanks','thank','thank you','thx','great','awesome','cool','nice','perfect','helpful','ok','okay'],
+ q:['thank you','thanks a lot'],
+ a:`Happy to help! If you'd like to talk to Anubhav directly, ${MAIL('Hello Anubhav','email him')} — he usually replies quickly.`,
+ next:['contact','projects']},
+
+{id:'bot',
+ k:['who are you','what are you','bot','assistant','robot','are you ai','are you real','chatgpt','claude','how do you work'],
+ q:['who are you','are you a bot','is this ai'],
+ a:`I'm a small assistant built into Anubhav's portfolio. I answer instantly from what he has shared about his work — I'm not a live AI, so for anything I can't answer, ${MAIL('Question from your portfolio','email him')}.`,
+ next:['about','contact']}
+];
+
+const AM_FALLBACK=`I don't have an answer for that yet. You can ask about his <b>experience, projects, skills, availability, AI work</b> or <b>INDIEFOLKS</b> — or ask him directly at ${MAIL('Question from your portfolio')}.`;
+const AM_STARTERS=['about','status','projects','experience','contact'];
+const AM_LABELS={about:'Who is Anubhav?',status:'Is he open to work?',roles:'Roles he wants',relocation:'Location & relocation',salary:'Salary expectation',notice:'When can he join?',experience:'Work experience',anarix:'Work at Anarix.ai',pepper:'Pepper Square',ideaforge:'Drone / ideaForge work',bosch:'Bosch internship',eesl:'EESL',unacademy:'Unacademy',dastan:'Motion & video',education:'Education',award:'Awards',projects:'See his projects',missionassurance:'Mission Assurance',canara:'Canara Bank app',ajio:'AJIO checkout',games:'His games',indiefolks:'INDIEFOLKS',research:'Research work',skills:'Skills & tools',ai:'AI experience',designsystem:'Design systems',branding:'Branding & visual',process:'Design process',hobbies:'Hobbies',why:'Why hire him?',code:'Can he code?',contact:'Contact him',resume:'Get his CV',freelance:'Freelance / collab',hello:'Say hi',thanks:'Thanks',bot:'What are you?'};
+
+/* =====================================================================
+   ASK-ANUBHAV ASSISTANT — MATCHING + CHAT UI (no server, no API key)
+   ===================================================================== */
+(function(){
+  const STOP=new Set('a an the is are was were be been am do does did of to in on at for with and or but i me my you your he him his it its this that these those can could would should will shall may might what which who whom how when where why tell show give about please any some there their they them we us our has have had just also so if as by from into than then very much more most get let know like want need hey'.split(' '));
+  const WEAK=new Set(['experience','work','job','design','designer','now','current','currently','free','project','ok','nice','cool','great','good']);
+  const stem=w=>{
+    if(w.length<=4)return w;
+    if(w.endsWith('ies'))return w.slice(0,-3)+'y';
+    if(w.endsWith('ing')&&w.length>5)return w.slice(0,-3);
+    if(w.endsWith('ed')&&w.length>5)return w.slice(0,-2);
+    if(w.endsWith('es')&&/(ss|sh|ch|x)es$/.test(w))return w.slice(0,-2);
+    if(w.endsWith('s')&&!w.endsWith('ss'))return w.slice(0,-1);
+    return w;
+  };
+  const toks=s=>s.toLowerCase().replace(/&/g,' and ').replace(/['’]/g,'').replace(/[^a-z0-9₹]+/g,' ').trim().split(/\s+/).filter(Boolean).map(stem);
+  function dist(a,b,max){
+    if(Math.abs(a.length-b.length)>max)return max+1;
+    let prev=Array.from({length:b.length+1},(_,i)=>i);
+    for(let i=1;i<=a.length;i++){
+      const cur=[i];let best=i;
+      for(let j=1;j<=b.length;j++){
+        cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+        if(cur[j]<best)best=cur[j];
+      }
+      if(best>max)return max+1;prev=cur;
+    }
+    return prev[b.length];
+  }
+
+  const INDEX=AM_KB.map(e=>{
+    const phrases=[],singles=new Set();
+    e.k.forEach(k=>{const t=toks(k);if(t.length>1)phrases.push(t);else if(t[0])singles.add(t[0]);});
+    const qt=new Set();e.q.forEach(q=>toks(q).forEach(t=>{if(!STOP.has(t))qt.add(t);}));
+    return {e,phrases,singles:[...singles],qt};
+  });
+  const byId=Object.fromEntries(AM_KB.map(e=>[e.id,e]));
+
+  function hasPhrase(qt,p){
+    outer:for(let i=0;i+p.length<=qt.length;i++){for(let j=0;j<p.length;j++)if(qt[i+j]!==p[j])continue outer;return true;}
+    return false;
+  }
+  function score(qt,ix){
+    let s=0;
+    ix.phrases.forEach(p=>{if(hasPhrase(qt,p))s+=3+p.length;});
+    qt.forEach(t=>{
+      let best=0;
+      for(const k of ix.singles){
+        const full=WEAK.has(k)?1.5:(k.length<=3?2:3);
+        if(t===k){best=Math.max(best,full);if(best===3)break;continue;}
+        if(k.length>=5&&t.length>=4){const m=k.length>=8?2:1;if(dist(t,k,m)<=m)best=Math.max(best,Math.min(full,2.5));}
+      }
+      s+=best;
+      if(!STOP.has(t)&&ix.qt.has(t))s+=1;
+    });
+    return s;
+  }
+  function answer(text,lastId){
+    const qt=toks(text);
+    if(!qt.length)return null;
+    const ranked=INDEX.map(ix=>({id:ix.e.id,s:score(qt,ix)})).sort((a,b)=>b.s-a.s);
+    const top=ranked[0];
+    if(lastId&&byId[lastId]&&top.s<4&&/\b(more|detail|details|elaborate|else|continue|go on)\b/i.test(text)){
+      const nid=(byId[lastId].next||[])[0];if(nid)return {id:nid,related:null};
+    }
+    if(top.s<(qt.length===1?1.5:2.5))return {id:null};
+    const second=ranked.find(r=>r.id!==top.id&&r.s>=top.s*0.8&&r.s>=4);
+    return {id:top.id,related:second?second.id:null};
+  }
+
+  /* ---------- UI ---------- */
+  const root=document.getElementById('amAI');if(!root)return;
+  const btn=document.getElementById('amAIBtn'),panel=document.getElementById('amAIPanel'),log=document.getElementById('amAILog'),
+        form=document.getElementById('amAIForm'),input=document.getElementById('amAIInput'),closeBtn=document.getElementById('amAIClose');
+  let lastId=null,started=false,busy=false;
+  const reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function scrollDown(){log.scrollTop=log.scrollHeight;}
+  function addMsg(html,who){
+    const m=document.createElement('div');m.className='am-msg am-'+who;
+    if(who==='user')m.textContent=html;else m.innerHTML=html;
+    log.appendChild(m);scrollDown();return m;
+  }
+  function addChips(ids,label){
+    ids=ids.filter(id=>byId[id]);if(!ids.length)return;
+    const wrap=document.createElement('div');wrap.className='am-chips';
+    if(label){const l=document.createElement('span');l.className='am-chips-l';l.textContent=label;wrap.appendChild(l);}
+    ids.forEach(id=>{const c=document.createElement('button');c.type='button';c.className='am-chip';c.textContent=AM_LABELS[id]||id;
+      c.addEventListener('click',()=>ask(AM_LABELS[id]||id,id));wrap.appendChild(c);});
+    log.appendChild(wrap);scrollDown();
+  }
+  function typing(){const t=document.createElement('div');t.className='am-msg am-bot am-typing';t.innerHTML='<i></i><i></i><i></i>';t.setAttribute('aria-label','typing');log.appendChild(t);scrollDown();return t;}
+  function ask(text,forceId){
+    if(busy)return;text=text.trim();if(!text)return;busy=true;
+    log.querySelectorAll('.am-chips').forEach(c=>c.classList.add('am-old'));
+    addMsg(text,'user');
+    const res=forceId?{id:forceId,related:null}:answer(text,lastId);
+    const t=typing();
+    setTimeout(()=>{
+      t.remove();
+      if(!res||!res.id){addMsg(AM_FALLBACK,'bot');addChips(['experience','projects','status','contact'],'Try:');}
+      else{const e=byId[res.id];const m=addMsg(e.a,'bot');lastId=e.id;
+        const nxt=(e.next||[]).slice();if(res.related&&!nxt.includes(res.related))nxt.unshift(res.related);
+        addChips(nxt.slice(0,3),res.related?'Related:':null);
+        if(m.offsetHeight>log.clientHeight*0.6)log.scrollTop=m.offsetTop-12;}
+      busy=false;
+    },reduceM?0:420+Math.random()*380);
+  }
+  function open(){
+    root.classList.add('open');btn.setAttribute('aria-expanded','true');panel.setAttribute('aria-hidden','false');
+    if(!started){started=true;
+      addMsg(`Hi, I'm Anubhav's portfolio assistant 👋<br>Ask me about his <b>work, experience, projects, skills</b> or <b>availability</b>.`,'bot');
+      addChips(AM_STARTERS);}
+    setTimeout(()=>input.focus({preventScroll:true}),reduceM?0:250);
+  }
+  function close(){root.classList.remove('open');btn.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');btn.focus({preventScroll:true});}
+  btn.addEventListener('click',()=>root.classList.contains('open')?close():open());
+  closeBtn.addEventListener('click',close);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('open'))close();});
+  form.addEventListener('submit',e=>{e.preventDefault();const v=input.value;input.value='';ask(v);});
+  /* let the site's custom cursor show the pointer state over the chat */
+  const cur=document.getElementById('cursor');
+  if(cur)panel.addEventListener('mouseover',e=>{cur.classList.toggle('grow',!!e.target.closest('a,button'));});
+  window.amAsk=(q)=>{const r=answer(q,null);return r&&r.id;}; /* handy for testing in the console */
+})();
+
 </script>
 </body>
 </html>

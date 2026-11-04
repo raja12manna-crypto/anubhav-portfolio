@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Oliv Coach — AI rubric builder · Anubhaveshwar Manna</title>
+<meta name="description" content="A take-home concept for Oliv.AI: the flow where a sales manager teaches an AI coach what good sounds like — 15 designed states, from empty to edit conflicts." />
+<meta name="theme-color" content="#0a0a0f" />
+<meta property="og:title" content="Oliv Coach — AI rubric builder" />
+<meta property="og:description" content="Teaching an AI coach what good sounds like. 15 designed states, live prototype." />
+<meta property="og:image" content="https://raja12manna-crypto.github.io/anubhav-portfolio/work/oliv-cover.jpg" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ctext x='9' y='42' font-family='Georgia,serif' font-size='30' fill='%23fff'%3EAM%3C/text%3E%3Ccircle cx='53' cy='40' r='4' fill='%236d5cff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="case.css" />
+<style>
+  .shot{margin-top:40px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px -40px rgba(80,70,180,.6)}
+  .shot img{display:block;width:100%;height:auto}
+  .states{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:30px}
+  .states a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;font-size:13.5px;transition:border-color .25s,background .25s}
+  .states a:hover{border-color:var(--accent);background:rgba(109,92,255,.1)}
+  .states a small{font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--mute)}
+  .states a.hard small{color:#ffb600}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="cs-nav">
+  <a class="back" href="../#work">← All work</a>
+  <a class="brand" href="../">AM<i>.</i></a>
+  <a class="cta" href="oliv-prototype/#part-a">Open prototype →</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker rv">Case study · Take-home for Oliv.AI · 2026</div>
+    <h1 class="rv">Teaching an AI coach what <em>good</em> sounds like.</h1>
+    <p class="lede rv">Oliv's <b>Coach</b> agent scores sales calls. But a score only means something if managers agree on the bar. This take-home designs the flow where a <b>sales manager defines a reusable coaching rubric</b> — and the launch section that announces it.</p>
+    <div class="meta rv">
+      <div><span>Role</span><b>Sole designer · design + build</b></div>
+      <div><span>Type</span><b>Take-home · Senior Product Designer</b></div>
+      <div><span>Scope</span><b>Product flow + marketing section</b></div>
+      <div><span>Output</span><b>Coded prototype · 15 states</b></div>
+    </div>
+    <div class="note rv">Independent take-home concept. Not affiliated with or endorsed by Oliv.AI. The prototype is frontend-only — the AI's generation is simulated, including its failure path.</div>
+    <div class="btn-row rv"><a class="btn btn-primary" href="oliv-prototype/#part-a">Try the live prototype →</a><a class="btn btn-ghost" href="#states">Jump to the 15 states</a></div>
+    <div class="shot rv"><img src="oliv-cover.jpg" width="1600" height="1000" alt="Oliv Coach rubric builder prototype — the rubric builder screen with anchor bands for a 1 and a 5" loading="eager" /></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">01 · The problem</div>
+    <h2 class="sec rv">An AI score is only as fair as the rubric behind it.</h2>
+    <p class="body rv">Managers coach on a handful of calls they happen to hear, each judged by a slightly different bar. An AI coach can listen to <b>every</b> call — but only if someone tells it, precisely, what a weak and a strong answer sound like. If that step is tedious or vague, managers skip it, and the AI's scores become noise nobody trusts.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">02 · Key decisions</div>
+    <h2 class="sec rv">Four decisions that shape the flow.</h2>
+    <div class="grid g2">
+      <div class="card rv"><div class="n">DECISION 01</div><h3>Managers write the extremes. AI drafts the middle.</h3><p>Defining all five levels from scratch is where people give up. The manager writes what a <b>1</b> and a <b>5</b> sound like; Coach drafts the bands between, in the manager's own words — to be edited, not accepted blindly.</p></div>
+      <div class="card rv"><div class="n">DECISION 02</div><h3>"Not observed" is an answer.</h3><p>If a skill never came up on a call, Coach says so instead of guessing a score. An AI that admits absence is easier to trust than one that always has a number.</p></div>
+      <div class="card rv"><div class="n">DECISION 03</div><h3>Rubrics are versioned.</h3><p>Once calls are scored against a rubric, editing it would silently change what old scores mean. Versioning keeps a score from March meaning what it meant in March — and the builder locks while scoring is live.</p></div>
+      <div class="card rv"><div class="n">DECISION 04</div><h3>Mobile is recomposed, not scaled.</h3><p>For the launch section, the mobile layout leads with the core idea and turns the scored-call illustration into a readable proof list, instead of shrinking the desktop design.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="states">
+  <div class="wrap">
+    <div class="sec-num rv">03 · Beyond the happy path</div>
+    <h2 class="sec rv">15 states, because AI products live in the edges.</h2>
+    <p class="body rv">Most take-homes stop at the ideal flow. Real AI products spend much of their time in the other states — the AI fails, two managers edit at once, a save drops. Each one is designed and live in the prototype. Open any state directly:</p>
+    <div class="states rv">
+      <a href="oliv-prototype/#part-a?state=empty">Empty state <small>First run</small></a>
+      <a href="oliv-prototype/#part-a?state=list">Rubric list <small>Overview</small></a>
+      <a href="oliv-prototype/#part-a?state=anchors">Builder · anchors <small>Write 1 &amp; 5</small></a>
+      <a href="oliv-prototype/#part-a?state=ladder">Builder · complete <small>AI-drafted bands</small></a>
+      <a href="oliv-prototype/#part-a?state=incomplete">1–10 scale, 3 defined <small>Partial</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=validation">Publish blocked <small>Validation</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=locked">Locked while scoring <small>Versioning</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=aifail">Coach failed <small>AI error</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=savefail">Save failing <small>Network</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=conflict">Edit conflict <small>Two editors</small></a>
+      <a href="oliv-prototype/#part-a?state=readonly">Rep view <small>Read-only</small></a>
+      <a href="oliv-prototype/#part-a?state=draft">Draft in list <small>Unpublished</small></a>
+      <a href="oliv-prototype/#part-a?state=archive">Archive dialog <small>Destructive</small></a>
+      <a href="oliv-prototype/#part-a?state=duplicate">Duplicate dialog <small>Reuse</small></a>
+      <a class="hard" href="oliv-prototype/#part-a?state=scalechange">Scale change <small>Data at risk</small></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="proto rv">
+      <div class="kicker">Live prototype</div>
+      <h3>Type in any field. Break the validation. Make Coach fail.</h3>
+      <p>Part A is the working rubric builder; Part B is the launch section in desktop and mobile layouts. Press 1–9 to jump between states while presenting.</p>
+      <div class="btn-row" style="margin-top:6px"><a class="btn btn-primary" href="oliv-prototype/#part-a">Part A · Rubric builder →</a><a class="btn btn-ghost" href="oliv-prototype/#part-b">Part B · Launch section</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <div class="kicker rv">Like how this thinks?</div>
+    <h2 class="rv">I design the AI moments — and everything around them.</h2>
+    <div class="btn-row rv">
+      <a class="btn btn-primary" href="mailto:raja12manna@gmail.com?subject=About%20the%20Oliv%20Coach%20case%20study">raja12manna@gmail.com →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/anubhav-manna-069419177" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="next rv">
+      <a href="anarix.html"><span>Previous case study</span><b>Designing a product that AI runs</b></a>
+      <a href="https://raja12manna-crypto.github.io/missionassurance/case-study.html"><span>Next case study</span><b>Mission Assurance — AI copilot for drone missions</b></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>© 2026 Anubhaveshwar Manna</span><a href="../">Back to portfolio ↑</a></footer>
+<script src="case.js"></script>
+</body>
+</html>

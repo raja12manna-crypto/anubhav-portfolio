@@ -269,6 +269,25 @@
   .b-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:4px 10px;background:rgba(10,10,15,.35)}
   .b-soon{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:10px;letter-spacing:.6px;color:#fff;padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.25);background:rgba(10,10,15,.55)}
 
+  /* positioning line */
+  .hero-pos{font-family:var(--mono);font-size:clamp(12px,1.2vw,14px);letter-spacing:.4px;color:var(--fg);margin-top:26px;padding-left:14px;border-left:2px solid var(--accent);opacity:0;animation:fadeUp .9s var(--ease) .7s both}
+  /* case study card meta */
+  .proj-body p + .proj-tags{margin:16px 0 0}
+  .proj-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+  .proj-meta b{color:var(--fg);font-weight:500}
+  .proj-meta .lbl{color:#0a0a0f;background:#fff;border-radius:100px;padding:2px 8px}
+  .proj-meta .lbl.nda{background:#ffb600}
+  .proj-meta .lbl.cpt{background:#a99fff}
+  /* playground mini cards */
+  .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media(max-width:860px){.mini{grid-template-columns:1fr}}
+  .mini a{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:border-color .35s var(--ease),transform .35s var(--ease)}
+  .mini a:hover{border-color:rgba(109,92,255,.5);transform:translateY(-3px)}
+  .mini img{width:96px;height:64px;object-fit:cover;border-radius:10px;display:block}
+  .mini b{display:block;font-family:var(--serif);font-weight:400;font-size:1.05rem;color:var(--fg);line-height:1.2}
+  .mini span{display:block;font-size:12.5px;color:var(--mute);margin-top:3px;line-height:1.45}
+  .mini small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-top:6px}
+
   /* contact extras */
   .contact-sub{margin:22px auto 0;max-width:520px;font-size:15px;line-height:1.6;color:var(--mute)}
   .contact-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px}
@@ -372,9 +391,8 @@
   <a href="#top" data-sec="top"><span class="txt">Intro</span><span class="tick"></span></a>
   <a href="#about" data-sec="about"><span class="txt">About</span><span class="tick"></span></a>
   <a href="#work" data-sec="work"><span class="txt">Work</span><span class="tick"></span></a>
-  <a href="#process" data-sec="process"><span class="txt">Process</span><span class="tick"></span></a>
   <a href="#experience" data-sec="experience"><span class="txt">Experience</span><span class="tick"></span></a>
-  <a href="#beyond" data-sec="beyond"><span class="txt">Beyond</span><span class="tick"></span></a>
+  <a href="#beyond" data-sec="beyond"><span class="txt">Playground</span><span class="tick"></span></a>
   <a href="#skills" data-sec="skills"><span class="txt">Skills</span><span class="tick"></span></a>
   <a href="#contact" data-sec="contact"><span class="txt">Contact</span><span class="tick"></span></a>
 </div>
@@ -384,7 +402,6 @@
   <div class="nav-links">
     <a href="#about" data-hover>About</a>
     <a href="#work" data-hover>Work</a>
-    <a href="#process" data-hover>Process</a>
     <a href="#experience" data-hover>Experience</a>
     <a href="#contact" data-hover>Contact</a>
   </div>
@@ -400,11 +417,12 @@
         <span class="line"><span class="inner"><span class="word">Designing</span> <span class="word">systems</span></span></span>
         <span class="line"><span class="inner"><span class="word">that</span> <span class="word">feel</span> <span class="word"><em>inevitable.</em></span></span></span>
       </h1>
+      <div class="hero-pos">Product designer for AI-native &amp; complex B2B products</div>
       <p class="hero-sub" id="heroSub">
         <strong>6+ years</strong> in design — <strong>3.6 years</strong> as a designer &amp; design lead in motion, brand &amp; visual, then <strong>2.6 years</strong> of product &amp; UX design across AI-native B2B SaaS, drone mission control, and research. Most recently at <strong>Anarix.ai</strong> — now open to new roles.
       </p>
       <div class="hero-cta">
-        <a href="#work" class="btn btn-primary" data-hover>View selected work <span class="arw">↓</span></a>
+        <a href="#work" class="btn btn-primary" data-hover>View case studies <span class="arw">↓</span></a>
         <a href="#contact" class="btn btn-ghost" data-hover>Get in touch <span class="arw">→</span></a>
       </div>
     </div>
@@ -445,79 +463,61 @@
 
 <section class="section" id="work" data-theme="mid">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="sec-title">Selected work</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="sec-title">Selected case studies</h2></div>
+    <p class="sec-lead reveal">AI products, complex B2B tools and research-led redesigns — each one with the problem, my role and the decisions behind it.</p>
     <div class="proj-list">
 
-      <a class="proj tilt reveal" href="https://raja12manna-crypto.github.io/missionassurance/" target="_blank" rel="noopener" aria-label="View the Mission Assurance case study">
-        <div class="proj-media"><img loading="lazy" decoding="async" src="missionassurance-cover.png" alt="Mission Assurance — AI mission validation platform concept: Know before you land"></div>
+      <a class="proj tilt reveal" href="work/anarix.html" aria-label="Read the Anarix.ai AI product design case study">
+        <div class="proj-media"><img loading="lazy" decoding="async" src="work/anarix-cover.jpg" width="1600" height="1000" alt="AI proposes, people decide — Anarix.ai process case study cover"></div>
         <div class="proj-body">
-          <div class="proj-tags"><span>AI Platform</span><span>Enterprise SaaS</span><span>End-to-End</span></div>
-          <h3>Mission Assurance — Preventing Mission Failure Before Landing</h3>
-          <p>An independent AI mission-validation concept for drone operations — public research → strategy → design system → fully interactive prototype. One health score, evidence-backed AI recommendations, and a Before-Landing Review that ends the re-flight.</p>
-          <span class="proj-link">View digital case study &amp; prototype <span class="arw">→</span></span>
+          <div class="proj-meta"><span class="lbl nda">Shipped · NDA</span><span><b>Product Designer</b></span><span>2024 – 2026</span></div>
+          <h3>Designing a product that AI runs — and people still trust</h3>
+          <p>Two years at Anarix.ai, an AI-native B2B SaaS company for marketplace sellers: turning AI from answers into reviewable actions, and building the design system that held it together.</p>
+          <div class="proj-tags"><span>AI product design</span><span>B2B SaaS</span><span>Design system</span></div>
+          <span class="proj-link">Read the process case study <span class="arw">→</span></span>
         </div>
       </a>
 
-      <a class="proj tilt reveal" data-d="1" href="https://raja12manna-crypto.github.io/canarabank/" target="_blank" rel="noopener" aria-label="View the Canara Bank Super App case study and prototype">
-        <div class="proj-media"><img loading="lazy" decoding="async" src="canara-cover.png" alt="Canara Bank Super App ai1 — banking super app UI redesign cover"></div>
+      <a class="proj tilt reveal" data-d="1" href="work/oliv.html" aria-label="Read the Oliv Coach AI rubric builder case study">
+        <div class="proj-media"><img loading="lazy" decoding="async" src="work/oliv-cover.jpg" width="1600" height="1000" alt="Oliv Coach rubric builder prototype screen"></div>
         <div class="proj-body">
-          <div class="proj-tags"><span>UX</span><span>Fintech</span><span>Mobile</span></div>
-          <h3>Canara Bank Super App — UI Redesign</h3>
-          <p>Reimagining banking UX for one of India's largest public-sector banks. Simplified complex financial workflows and brought clarity to everyday interactions.</p>
-          <span class="proj-link">View digital case study &amp; prototype <span class="arw">→</span></span>
+          <div class="proj-meta"><span class="lbl">Take-home</span><span><b>Sole designer</b></span><span>2026</span></div>
+          <h3>Oliv Coach — teaching an AI coach what good sounds like</h3>
+          <p>A sales manager writes what a 1 and a 5 sound like; the AI drafts the rest. A coded prototype with 15 designed states — including the AI failing, edit conflicts and versioning.</p>
+          <div class="proj-tags"><span>AI agent UX</span><span>SaaS</span><span>Edge states</span></div>
+          <span class="proj-link">Read case study &amp; try prototype <span class="arw">→</span></span>
         </div>
       </a>
 
-      <a class="proj tilt reveal" href="https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO" target="_blank" rel="noopener" aria-label="View the AJIO case study on Behance">
-        <div class="proj-media"><img loading="lazy" decoding="async" src="ajio-cover.png" alt="AJIO — human-centric checkout UX/UI case study cover"></div>
+      <a class="proj tilt reveal" href="https://raja12manna-crypto.github.io/missionassurance/case-study.html" aria-label="Read the Mission Assurance case study">
+        <div class="proj-media"><img loading="lazy" decoding="async" src="missionassurance-cover.png" width="1600" height="1000" alt="Mission Assurance — AI mission validation platform concept: Know before you land"></div>
         <div class="proj-body">
-          <div class="proj-tags"><span>UX Case Study</span><span>E-commerce</span></div>
-          <h3>AJIO — Human-Centric Checkout</h3>
-          <p>A redesign addressing pain points across browsing, discovery, and checkout — reducing friction on the path to purchase.</p>
-          <span class="proj-link">View case study <span class="arw">→</span></span>
+          <div class="proj-meta"><span class="lbl cpt">Independent concept</span><span><b>End-to-end</b></span><span>2026 · 6 months</span></div>
+          <h3>Mission Assurance — catching drone mission failure before landing</h3>
+          <p>An AI copilot for drone mapping crews, built on my ideaForge field experience and a nine-platform teardown: one Mission Health Score, evidence-backed recommendations and a Before-Landing Review.</p>
+          <div class="proj-tags"><span>AI copilot</span><span>Enterprise</span><span>Field ops</span></div>
+          <span class="proj-link">Read case study &amp; fly the prototype <span class="arw">→</span></span>
         </div>
       </a>
 
-      <a class="proj tilt reveal" href="https://raja12manna-crypto.github.io/eod/" target="_blank" rel="noopener" aria-label="Play EOD — Element of Design, a digital card game">
-        <div class="proj-media"><img loading="lazy" decoding="async" src="eod-cover.png" alt="EOD — Element of Design digital card game cover"></div>
+      <a class="proj tilt reveal" data-d="1" href="https://raja12manna-crypto.github.io/canarabank/case-study.html" aria-label="Read the Canara Bank ai1 redesign case study">
+        <div class="proj-media"><img loading="lazy" decoding="async" src="canara-cover.png" width="1600" height="1000" alt="Canara Bank Super App ai1 — banking super app UI redesign cover"></div>
         <div class="proj-body">
-          <div class="proj-tags"><span>UX Game Study</span><span>Game Design</span></div>
-          <h3>EOD — Element of Design (Digital Card Game)</h3>
-          <p>A digital card game for interdisciplinary master's students in design colleges — it takes the stress out of memorising industry design terminology for students coming from outside design.</p>
-          <span class="proj-link">Play game <span class="arw">→</span></span>
+          <div class="proj-meta"><span class="lbl cpt">M.Des study · NIFT</span><span><b>Solo UX/UI</b></span><span>Research-led</span></div>
+          <h3>Canara ai1 — making a bank transfer simple again</h3>
+          <p>An independent redesign of a public-sector banking super app, grounded in a UI audit, a 54-person survey and 6 interviews. Contrast lifted from 1.37:1 to 5.98:1 and a linear transfer flow.</p>
+          <div class="proj-tags"><span>Fintech</span><span>Mobile</span><span>Accessibility</span></div>
+          <span class="proj-link">Read case study &amp; prototype <span class="arw">→</span></span>
         </div>
       </a>
 
-      <a class="proj tilt reveal" href="https://raja12manna-crypto.github.io/gamerama/" target="_blank" rel="noopener" aria-label="Play RAMA — a mythical-retro game experience">
-        <div class="proj-media"><img loading="lazy" decoding="async" src="rama-cover.png" alt="RAMA — a mythical-retro game experience cover"></div>
-        <div class="proj-body">
-          <div class="proj-tags"><span>UX/UI Game Study</span><span>Game Design</span></div>
-          <h3>RAMA — A Mythical-Retro Game Experience</h3>
-          <p>A contemporary way to introduce Gen-Z to Indian mythological stories — and a nostalgic experience for millennials and elders.</p>
-          <span class="proj-link">Play game <span class="arw">→</span></span>
-        </div>
-      </a>
-
-      </div>
-  </div>
-</section>
-
-<section class="section" id="process" data-theme="mid">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">How I work</h2></div>
-    <p class="sec-lead reveal">Every project runs on the same loop — question the brief, find the real problem, then design the system that makes the answer feel obvious.</p>
-    <div class="process">
-      <div class="step reveal"><div class="step-n">01 / UNDERSTAND</div><h3>Go to the source</h3><p>Field visits, contextual inquiry and interviews with the people who actually do the work — operators, sellers, artisans.</p><ul><li>Field research</li><li>Interviews</li><li>Data</li></ul></div>
-      <div class="step reveal" data-d="1"><div class="step-n">02 / FRAME</div><h3>Name the real problem</h3><p>Synthesis into a sharp problem statement, success metrics and the strategy that ties design to business outcomes.</p><ul><li>Affinity mapping</li><li>Strategy</li><li>Metrics</li></ul></div>
-      <div class="step reveal" data-d="2"><div class="step-n">03 / SYSTEMISE</div><h3>Design the system</h3><p>Information architecture, flows and a design system — including how AI should behave, explain itself and earn trust.</p><ul><li>IA &amp; flows</li><li>Design systems</li><li>AI UX</li></ul></div>
-      <div class="step reveal" data-d="3"><div class="step-n">04 / PROVE</div><h3>Prototype, test, ship</h3><p>Interactive prototypes in users' hands early, iterated until the numbers move — like 30% faster task completion.</p><ul><li>Prototyping</li><li>Usability tests</li><li>Motion</li></ul></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="experience" data-theme="dark">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Where I've built things</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">Where I've built things</h2></div>
     <div class="exp">
       <div class="exp-item reveal">
         <div class="exp-when">Aug 2024 — Aug 2026</div>
@@ -565,14 +565,14 @@
 
 <section class="section" id="beyond" data-theme="mid">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">Beyond the brief</h2></div>
-    <p class="sec-lead reveal">Self-initiated work — where research, storytelling and play meet.</p>
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Playground &amp; side projects</h2></div>
+    <p class="sec-lead reveal">Self-initiated work — where research, storytelling and play meet. Personal projects, labelled as such.</p>
     <div class="beyond">
       <article class="b-card b-craft reveal">
         <div class="b-art" aria-hidden="true"></div>
-        <div class="b-kicker">Now building · Craft community</div>
-        <h3>INDIEFOLKS</h3>
-        <p>A community platform for Indian craft artisans — documenting their craft through film and interviews, publishing research, and building direct market links so artisans earn more. Currently in the field with Kanchipuram silk weavers.</p>
+        <div class="b-kicker">Founding · Craft research council</div>
+        <h3>Asian Craft &amp; Research Council</h3>
+        <p>A not-for-profit I'm founding to document and support artisans' handmade crafts across Asia — clothes, sculpture, painting and furniture — through documentaries, field research and the <b>INDIEFOLKS</b> research paper series. Fieldwork so far with Kanchipuram silk weavers and Chhattisgarh makers.</p>
         <div class="b-tags"><span>Craft research</span><span>Documentary</span><span>Brand &amp; platform</span></div>
       </article>
       <article class="b-card b-game reveal" data-d="1">
@@ -584,12 +584,17 @@
         <div class="b-tags"><span>Game design</span><span>Character design</span><span>HTML5</span></div>
       </article>
     </div>
+    <div class="mini">
+      <a class="reveal" href="https://raja12manna-crypto.github.io/eod/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="eod-cover.png" alt="EOD card game cover"><div><b>EOD — Elements of Design</b><span>Solitaire with 52 design terms — learn the vocabulary by playing.</span><small>Play the game ↗</small></div></a>
+      <a class="reveal" data-d="1" href="https://raja12manna-crypto.github.io/gamerama/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="rama-cover.png" alt="RAMA game cover"><div><b>RAMA — Paths to Lanka</b><span>A mythical-retro game bringing the Ramayana to Gen-Z.</span><small>Play the game ↗</small></div></a>
+      <a class="reveal" data-d="2" href="https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="ajio-cover.png" alt="AJIO checkout case study cover"><div><b>AJIO — checkout UX</b><span>Earlier student case study on browsing-to-checkout friction.</span><small>View on Behance ↗</small></div></a>
+    </div>
   </div>
 </section>
 
 <section class="section" id="skills" data-theme="light">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title">What I work with</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">What I work with</h2></div>
     <div class="skills-cloud reveal" id="cloud">
       <span class="chip" data-w="1">Product Design</span>
       <span class="chip" data-w="1">UX Research</span>
@@ -717,7 +722,7 @@ const hoverable=matchMedia('(hover:hover)').matches;
 (function(){
   const links=[...document.querySelectorAll('.side-nav a')];const map={};links.forEach(l=>map[l.dataset.sec]=l);
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));(map[e.target.id]||{classList:{add(){}}}).classList.add('active');}});},{rootMargin:'-45% 0px -45% 0px'});
-  ['top','about','work','process','experience','beyond','skills','contact'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+  ['top','about','work','experience','beyond','skills','contact'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
 })();
 
 addEventListener('load',()=>{
@@ -842,7 +847,7 @@ const AM_KB=[
  q:['is he open to work','is he looking for a job','where is he working now','is he available','can we hire him','what is he doing currently'],
  a:`Yes — Anubhav is <b>open to work</b>. He left Anarix.ai in <b>August 2026</b> and is now focused full-time on his next role.
  <br><br>He's looking for <b>Senior UX Designer, Product Designer and UI/UX Designer</b> roles across design, branding, UI/UX and product design — in private companies as well as public-sector and government organisations.
- <br><br>Meanwhile he's building ${'<b>INDIEFOLKS</b>'}, a community platform for craft artisans, and writing a craft research paper.`,
+ <br><br>Meanwhile he's founding the <b>Asian Craft &amp; Research Council</b>, a not-for-profit documenting artisan crafts, and writing a craft research paper.`,
  next:['roles','why','contact']},
 
 {id:'roles',
@@ -896,8 +901,8 @@ const AM_KB=[
  <li>Built a scalable <b>Figma design system</b> and ran usability testing</li>
  <li>Designed AI-driven product experiences as the company moved toward an AI-first product</li>
  <li>Impact: <b>30% faster</b> task completion, <b>25%</b> higher feature adoption, MVP shipped in <b>3 months</b></li></ul>
- Because of an NDA he can't show screens or product details publicly, but he's glad to walk through his process and approach in a conversation.`,
- next:['ai','designsystem','experience']},
+ Because of an NDA he can't show screens or product details, but his ${L('work/anarix.html','process case study')} covers the problems, decisions and AI-design principles — and he's glad to go deeper in an interview.`,
+ next:['ai','oliv','designsystem']},
 
 {id:'pepper',
  k:['pepper square','pepper','pepper square intern'],
@@ -956,15 +961,14 @@ const AM_KB=[
 {id:'projects',
  k:['projects','project','portfolio','work samples','case study','case studies','samples','selected work','show work','his work','best work','behance','prototype','prototypes'],
  q:['show me his projects','what has he designed','can i see his case studies','what is his best work'],
- a:`Selected work:
+ a:`Case studies:
  <ul>
- <li>${L('https://raja12manna-crypto.github.io/missionassurance/','<b>Mission Assurance</b>')} — AI mission-validation platform for drone operations (end-to-end concept + prototype)</li>
- <li>${L('https://raja12manna-crypto.github.io/canarabank/','<b>Canara Bank Super App</b>')} — banking UI redesign</li>
- <li>${L('https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO','<b>AJIO</b>')} — human-centric checkout UX</li>
- <li>${L('https://raja12manna-crypto.github.io/eod/','<b>EOD — Element of Design</b>')} — digital card game</li>
- <li>${L('https://raja12manna-crypto.github.io/gamerama/','<b>RAMA</b>')} — mythical-retro game</li>
- </ul>More on ${L(AM_LINKS.behance,'Behance')}.`,
- next:['missionassurance','canara','games']},
+ <li>${L('work/anarix.html','<b>Anarix.ai</b>')} — designing an AI-native B2B product (process case study, NDA-safe)</li>
+ <li>${L('work/oliv.html','<b>Oliv Coach</b>')} — AI rubric builder take-home with 15 designed states</li>
+ <li>${L('https://raja12manna-crypto.github.io/missionassurance/case-study.html','<b>Mission Assurance</b>')} — AI copilot for drone missions (concept + prototype)</li>
+ <li>${L('https://raja12manna-crypto.github.io/canarabank/case-study.html','<b>Canara ai1</b>')} — research-led banking app redesign (M.Des)</li>
+ </ul>Playground: ${L('https://raja12manna-crypto.github.io/eod/','EOD')}, ${L('https://raja12manna-crypto.github.io/gamerama/','RAMA')} and ${L('https://www.behance.net/gallery/204624973/Website-Redesign-UI-UX-Case-Study-AJIO','AJIO')}.`,
+ next:['anarix','oliv','missionassurance']},
 
 {id:'missionassurance',
  k:['mission assurance','mission','health score','before landing','re flight','reflight','validation','ai platform'],
@@ -1000,20 +1004,26 @@ const AM_KB=[
  a:`<b>MASTERSTROKE</b> (coming soon) is a Tekken-style arcade fighting game Anubhav built, where history's great artists battle each other — an art-history lesson you play. It'll be released on this site soon.`,
  next:['games','projects']},
 
+{id:'oliv',
+ k:['oliv','oliv ai','olive','oliv coach','coach','rubric','rubrics','take home','takehome','assignment','sales coaching','edge cases','edge states','states'],
+ q:['what is oliv coach','tell me about the oliv project','has he done a take home'],
+ a:`${L('work/oliv.html','<b>Oliv Coach</b>')} is a take-home concept (not affiliated with Oliv.AI): the flow where a sales manager teaches an AI coach what good sounds like. The manager writes what a 1 and a 5 sound like and the AI drafts the bands between. It's a coded prototype with <b>15 designed states</b> — including the AI failing, edit conflicts and rubric versioning. ${L('work/oliv-prototype/#part-a','Try the prototype')}.`,
+ next:['ai','anarix','projects']},
+
 /* ---------- craft venture & research ---------- */
 {id:'indiefolks',
- k:['indiefolks','indie folks','craft','crafts','artisan','artisans','weaver','weavers','weaving','saree','sarees','silk','kanchipuram','kanjivaram','kanjeevaram','handloom','textile','documentary','documentaries','community','ngo','venture','side project'],
+ k:['acrc','asian craft','research council','council','indiefolks','indie folks','craft','crafts','artisan','artisans','weaver','weavers','weaving','saree','sarees','silk','kanchipuram','kanjivaram','kanjeevaram','handloom','textile','documentary','documentaries','community','ngo','venture','side project'],
  q:['what is indiefolks','what is he building now','does he work with artisans','tell me about his craft work'],
- a:`<b>INDIEFOLKS</b> is a community platform for Indian craft artisans that Anubhav is building with a small team. The idea goes back to 2018; the current version started in April 2026.
- <br><br>It combines <b>craft documentation</b> (films and interviews with artisans), <b>research</b>, and <b>direct market links</b> so artisans get more exposure and better earnings. Current focus: <b>Kanchipuram silk weaving</b>.
- <br><br>His role covers design, development, shoots, scripts, the research paper, and the brand and website. For collaborations, sponsorship or partnerships: ${MAIL('INDIEFOLKS collaboration')}.`,
+ a:`Anubhav is founding the <b>Asian Craft &amp; Research Council (ACRC)</b>, a not-for-profit with a small team that documents and supports artisans' handmade crafts across Asia — clothes, sculpture, painting and furniture. The idea goes back to 2018.
+ <br><br>It combines <b>documentaries</b>, <b>field research</b> and the <b>INDIEFOLKS</b> research paper series, with routes for workshops and visits. Fieldwork so far: <b>Kanchipuram silk weavers</b> and Chhattisgarh makers.
+ <br><br>He leads design, content, shoots, scripts and research. For collaborations, sponsorship or partnerships: ${MAIL('ACRC collaboration')}.`,
  next:['research','dastan','contact']},
 
 {id:'research',
  k:['research','researcher','ux research','user research','paper','research paper','publication','interviews','interview','fieldwork','field research','contextual inquiry','usability','usability testing','heuristic','affinity','methods','methodology'],
  q:['does he do user research','what research methods does he use','is he writing a research paper'],
  a:`Research is core to how he works. Methods he uses: <b>field research, contextual inquiry, interviews, usability testing, heuristic evaluation, affinity mapping</b> and competitive analysis — with drone operators at ideaForge, B2B journeys at Bosch, and users at Anarix.ai.
- <br><br>He's also writing a <b>research paper on Kanchipuram silk craft</b> as part of INDIEFOLKS, based on fieldwork with artisans.`,
+ <br><br>He's also writing a <b>research paper on Kanchipuram silk craft</b> for the INDIEFOLKS research paper series, based on fieldwork with artisans.`,
  next:['indiefolks','process','ideaforge']},
 
 /* ---------- skills ---------- */
@@ -1028,8 +1038,8 @@ const AM_KB=[
 {id:'ai',
  k:['ai','artificial intelligence','ai design','ai products','ai experience','llm','gen ai','genai','generative','chatbot','prompt','prompt engineering','machine learning','ml','automation','agentic'],
  q:['has he designed ai products','does he have ai experience','can he design for ai'],
- a:`Yes. He spent two years at <b>Anarix.ai</b>, an AI-native B2B SaaS company, designing AI-driven product experiences as the product moved toward being AI-first (details are under NDA). He also works with <b>AI workflows and prompt engineering</b>, and his ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} concept is built around evidence-backed AI recommendations.`,
- next:['anarix','missionassurance','skills']},
+ a:`Yes. He spent two years at <b>Anarix.ai</b>, an AI-native B2B SaaS company, designing AI-driven product experiences as the product moved toward being AI-first (details are under NDA). He also works with <b>AI workflows and prompt engineering</b>, his ${L('work/oliv.html','Oliv Coach')} take-home designs an AI agent's failure and edge states, and his ${L('https://raja12manna-crypto.github.io/missionassurance/case-study.html','Mission Assurance')} concept is built around evidence-backed AI recommendations. Start with the ${L('work/anarix.html','Anarix case study')}.`,
+ next:['anarix','oliv','missionassurance']},
 
 {id:'designsystem',
  k:['design system','design systems','components','component library','tokens','ui kit','style guide','scalable'],
@@ -1091,7 +1101,7 @@ const AM_KB=[
 {id:'freelance',
  k:['freelance','freelancer','contract','consulting','consultant','collaborate','collaboration','partner','partnership','side gig','commission','sponsor','sponsorship'],
  q:['does he take freelance work','can we collaborate','is he available for a contract project'],
- a:`For freelance, contract or collaboration enquiries, ${MAIL('Project enquiry','email him')} with a short brief — scope, timeline and what you need. For craft-related partnerships, mention INDIEFOLKS.`,
+ a:`For freelance, contract or collaboration enquiries, ${MAIL('Project enquiry','email him')} with a short brief — scope, timeline and what you need. For craft-related partnerships, mention ACRC.`,
  next:['contact','indiefolks']},
 
 /* ---------- small talk ---------- */
@@ -1116,7 +1126,7 @@ const AM_KB=[
 
 const AM_FALLBACK=`I don't have an answer for that yet. You can ask about his <b>experience, projects, skills, availability, AI work</b> or <b>INDIEFOLKS</b> — or ask him directly at ${MAIL('Question from your portfolio')}.`;
 const AM_STARTERS=['about','status','projects','experience','contact'];
-const AM_LABELS={about:'Who is Anubhav?',status:'Is he open to work?',roles:'Roles he wants',relocation:'Location & relocation',salary:'Salary expectation',notice:'When can he join?',experience:'Work experience',anarix:'Work at Anarix.ai',pepper:'Pepper Square',ideaforge:'Drone / ideaForge work',bosch:'Bosch internship',eesl:'EESL',unacademy:'Unacademy',dastan:'Motion & video',education:'Education',award:'Awards',projects:'See his projects',missionassurance:'Mission Assurance',canara:'Canara Bank app',ajio:'AJIO checkout',games:'His games',masterstroke:'MASTERSTROKE',indiefolks:'INDIEFOLKS',research:'Research work',skills:'Skills & tools',ai:'AI experience',designsystem:'Design systems',branding:'Branding & visual',process:'Design process',hobbies:'Hobbies',why:'Why hire him?',code:'Can he code?',contact:'Contact him',resume:'Get his CV',freelance:'Freelance / collab',hello:'Say hi',thanks:'Thanks',bot:'What are you?'};
+const AM_LABELS={about:'Who is Anubhav?',status:'Is he open to work?',roles:'Roles he wants',relocation:'Location & relocation',salary:'Salary expectation',notice:'When can he join?',experience:'Work experience',anarix:'Work at Anarix.ai',pepper:'Pepper Square',ideaforge:'Drone / ideaForge work',bosch:'Bosch internship',eesl:'EESL',unacademy:'Unacademy',dastan:'Motion & video',education:'Education',award:'Awards',projects:'See his projects',missionassurance:'Mission Assurance',canara:'Canara Bank app',ajio:'AJIO checkout',games:'His games',masterstroke:'MASTERSTROKE',indiefolks:'ACRC & craft research',oliv:'Oliv Coach',research:'Research work',skills:'Skills & tools',ai:'AI experience',designsystem:'Design systems',branding:'Branding & visual',process:'Design process',hobbies:'Hobbies',why:'Why hire him?',code:'Can he code?',contact:'Contact him',resume:'Get his CV',freelance:'Freelance / collab',hello:'Say hi',thanks:'Thanks',bot:'What are you?'};
 
 /* =====================================================================
    ASK-ANUBHAV ASSISTANT — MATCHING + CHAT UI (no server, no API key)

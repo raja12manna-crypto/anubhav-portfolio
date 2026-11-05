@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Color blind, not blind — Anubhaveshwar Manna</title>
+<meta name="description" content="M.Des research by Anubhaveshwar Manna into how color-blind people read visual media, and a design guide for inclusive design. Includes a live color vision simulator." />
+<meta name="theme-color" content="#0a0a0f" />
+<meta property="og:title" content="Color blind, not blind — Anubhaveshwar Manna" />
+<meta property="og:description" content="Research with 6 color-blind users and 31 designers, turned into a design guide for inclusive visual media." />
+<meta property="og:image" content="https://raja12manna-crypto.github.io/anubhav-portfolio/work/colorblind-cover.jpg" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ctext x='9' y='42' font-family='Georgia,serif' font-size='30' fill='%23fff'%3EAM%3C/text%3E%3Ccircle cx='53' cy='40' r='4' fill='%236d5cff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="case.css" />
+<style>
+  /* A lighter accent for small text, so every label on this page clears 4.5:1 */
+  :root{--accent-text:#a99fff;--paper:#f5f5f8;--ink:#17171f;--ink-2:#55556a;--paper-line:#d9d9e3}
+  .kicker,.sec-num,.card .n,.principles .k,.card .q::before{color:var(--accent-text)}
+  .hero h1{max-width:none}
+  .hero h1 span{display:block;font-style:italic}
+  h2.sec{text-wrap:balance}
+  /* The cover crops to its color bands here, because the headline is already above it */
+  .shot{margin-top:40px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+  .shot img{display:block;width:100%;height:auto;aspect-ratio:1600/520;object-fit:cover;object-position:0 100%}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:36px}
+  .stats div{background:var(--bg);padding:22px 22px 20px;min-width:0}
+  .stats b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.2rem);line-height:1;letter-spacing:-.02em}
+  .stats span{display:block;margin-top:10px;font-size:13.5px;color:var(--mute)}
+  .fine{margin-top:12px;font-size:12.5px;color:var(--mute)}
+  h3.sub{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.2;margin-top:44px}
+  .goals{margin-top:14px;padding-left:18px;color:var(--mute);font-size:15.5px;max-width:680px;display:grid;gap:8px}
+
+  .card blockquote{font-family:var(--serif);font-style:italic;font-size:1.08rem;line-height:1.4;color:var(--fg);margin-bottom:12px}
+  .pull{margin-top:30px;max-width:680px;padding:4px 0 4px 20px;border-left:2px solid var(--accent-text);font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.35}
+  .pull cite{display:block;margin-top:8px;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.6px;color:var(--mute)}
+
+  /* Simulator */
+  .sim-bar{position:sticky;top:74px;z-index:20;display:flex;flex-wrap:wrap;gap:6px;margin-top:28px;padding:8px;border:1px solid var(--line);border-radius:16px;background:rgba(18,17,28,.94)}
+  .sim-bar legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .sim-bar label{flex:1 1 130px;min-width:0;cursor:pointer}
+  .sim-bar input{position:absolute;opacity:0;width:1px;height:1px}
+  .sim-bar span{display:block;height:100%;padding:9px 12px;border-radius:10px;border:1px solid transparent;font-size:13.5px;font-weight:500;transition:background .2s,color .2s}
+  .sim-bar small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.4px;font-weight:400;color:var(--mute);margin-top:2px}
+  .sim-bar label:hover span{border-color:var(--line)}
+  .sim-bar input:checked+span{background:#fff;color:#0a0a0f}
+  .sim-bar input:checked+span small{color:#44445a}
+  .sim-bar input:focus-visible+span{outline:2px solid var(--accent-text);outline-offset:2px}
+  @media(max-width:700px){
+    .sim-bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .sim-bar label{flex:0 0 auto}
+    .sim-bar small{display:none}
+  }
+  .sim-status{margin-top:12px;font-size:13.5px;color:var(--mute);min-height:1.6em}
+  .sim-stage{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  @media(max-width:860px){.sim-stage{grid-template-columns:1fr}}
+  .panel{min-width:0;background:var(--paper);color:var(--ink);border-radius:16px;padding:20px}
+  .panel h3{font-family:var(--sans);font-size:15px;font-weight:600;line-height:1.3}
+  .panel p{margin-top:4px;font-size:13px;color:var(--ink-2)}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .pair>div{min-width:0}
+  .tag{display:block;margin-bottom:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.5px;color:var(--ink-2)}
+  .field{display:flex;align-items:center;gap:6px;min-height:36px;padding:6px 10px;border:2px solid;border-radius:8px;background:#fff;font-size:12.5px}
+  .field+.field{margin-top:8px}
+  .field.bad{border-color:#d6322c}.field.good{border-color:#2e9e3f}
+  .field i{font-style:normal;font-weight:700;line-height:1}
+  .field.bad i{color:#d6322c}.field.good i{color:#1f7a2e}
+  .msg{margin-top:4px;font-size:11.5px;line-height:1.3;color:#a81e19}
+  .msg+.field{margin-top:8px}
+  .bars{display:flex;align-items:flex-end;gap:10px;height:112px;padding-bottom:1px;border-bottom:1px solid #8b8b9c}
+  .bars .g{flex:1;display:flex;align-items:flex-end;gap:3px;height:100%;min-width:0}
+  .bars u{flex:1;display:block;text-decoration:none;min-width:0}
+  .bars .a{background:#d6322c}.bars .b{background:#2e9e3f}
+  .patterned .a{background:repeating-linear-gradient(45deg,#d6322c 0 3px,#fff 3px 5px);outline:1px solid #d6322c;outline-offset:-1px}
+  .key{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;font-size:11.5px;color:var(--ink-2)}
+  .key b{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px;background:#d6322c}
+  .key .k2{background:#2e9e3f}
+  .patterned .key b{background:repeating-linear-gradient(45deg,#d6322c 0 3px,#fff 3px 5px);outline:1px solid #d6322c;outline-offset:-1px}
+  .patterned .key .k2{background:#2e9e3f;outline:0}
+  .combos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  @media(max-width:480px){.combos{grid-template-columns:repeat(2,1fr)}}
+  .combos div{min-width:0;font-size:11.5px;line-height:1.25;color:var(--ink-2)}
+  .combos i{display:grid;grid-template-columns:1fr 1fr;height:44px;margin-bottom:6px;border-radius:6px;overflow:hidden}
+  .combos u{display:block}
+  .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:16px}
+  .swatches i{display:block;height:44px;border-radius:6px}
+  .sim-note{margin-top:14px;font-size:12.5px;color:var(--mute);max-width:680px}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="cs-nav">
+  <a class="back" href="../#work">← All work</a>
+  <a class="brand" href="../">AM<i>.</i></a>
+  <a class="cta" href="#simulator">Try the simulator</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker rv">Case study · M.Des research · NIFT Bengaluru · 2024</div>
+    <h1 class="rv">“I am color blind, <span>not blind.</span>”</h1>
+    <p class="lede rv">That's how one participant in this study put it. An estimated <b>300 million people</b> are color blind, and organizations and businesses often overlook them. I studied how they read visual media and advertising, then turned the findings into a <b>design guide</b> for the people who make it.</p>
+    <div class="meta rv">
+      <div><span>Role</span><b>Researcher &amp; designer</b></div>
+      <div><span>Type</span><b>M.Des research project</b></div>
+      <div><span>Research</span><b>6 color-blind users · 31 designers</b></div>
+      <div><span>Output</span><b>Design guide + proposal poster</b></div>
+    </div>
+    <div class="note rv">This is a research study and a proposed guide. It wasn't shipped or tested in use, so there are no impact numbers here. The simulator further down is new for this page.</div>
+    <div class="shot rv"><img src="colorblind-cover.jpg" width="1600" height="1000" alt="The same six color bands shown four times: in typical vision, protanopia, deuteranopia and tritanopia. Reds and greens turn to similar olive tones in two of the simulated views." loading="eager" /></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">01 · The problem</div>
+    <h2 class="sec rv">When color carries the message, some people miss it.</h2>
+    <p class="body rv">Designers use color to show what matters, what went wrong and what to do next. The studies I reviewed showed that color blindness can affect how people engage with visual advertising and how well they understand it.</p>
+    <div class="stats rv">
+      <div><b>300M</b><span>people estimated to be color blind</span></div>
+      <div><b>8%</b><span>of men, or 1 in 12</span></div>
+      <div><b>0.5%</b><span>of women, or 1 in 200</span></div>
+    </div>
+    <p class="fine rv">Global estimates used in the study.</p>
+    <h3 class="sub rv">What I set out to do</h3>
+    <ul class="goals rv">
+      <li>Investigate existing design practices and guidelines for color-blind consumers.</li>
+      <li>Make people aware of how color-blind-friendly design affects commercial effectiveness.</li>
+      <li>Identify the elements that help designers create inclusive design.</li>
+      <li>Understand how a style guide would affect color-blind people using visual media.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">02 · The research</div>
+    <h2 class="sec rv">I listened to both sides of the screen.</h2>
+    <p class="body rv">Color-blind people live with the problem. Designers decide how much of it they face. I needed to hear from both.</p>
+    <ul class="principles">
+      <li class="rv"><span class="k">01</span><div><b>Secondary research</b><span>I reviewed existing work on inclusive design and accessible visual advertising.</span></div></li>
+      <li class="rv"><span class="k">02</span><div><b>Survey and interviews</b><span>I worked with 31 designers and 6 color-blind users to understand their mental models when creating or using visual media.</span></div></li>
+      <li class="rv"><span class="k">03</span><div><b>Synthesis</b><span>I analyzed the findings, mapped them into an empathy map and used them to propose solutions.</span></div></li>
+      <li class="rv"><span class="k">04</span><div><b>Visual research and color simulation</b><span>I used color simulators to understand which colors hold up, and built a color-blind-friendly palette from what I learned.</span></div></li>
+    </ul>
+    <div class="chips rv"><span>Literature review</span><span>Survey</span><span>Interviews</span><span>Empathy mapping</span><span>Color simulation</span><span>Adobe Illustrator</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">03 · What I heard</div>
+    <h2 class="sec rv">It shows up in small, ordinary moments.</h2>
+    <p class="body rv">The moments people described were ordinary: a color they got wrong, a client asking for changes, a game that became harder to follow.</p>
+    <div class="grid g3">
+      <div class="card rv"><div class="n">INSIGHT 01</div><h3>The gap is invisible from the inside</h3><blockquote>“I don't know what other people see so I don't know the difference, everything looks normal to me.”</blockquote><p>People can find out from someone else that a color isn't what they thought.</p><span class="q">Give every color cue a second signal, so no one has to guess.</span></div>
+      <div class="card rv"><div class="n">INSIGHT 02</div><h3>It reaches into people's work</h3><blockquote>“Sometimes color grading which I do doesn't exactly seem ok, so clients ask for revisions.”</blockquote><p>This participant edits video and asks a friend for help when colors become a problem.</p><span class="q">Teach contrast and testing, so problems are caught before work goes out.</span></div>
+      <div class="card rv"><div class="n">INSIGHT 03</div><h3>Everyday interfaces fail quietly</h3><blockquote>“Games are a problem sometimes, since I get confused between the colored markers on different players.”</blockquote><p>Website text, vehicle dashboards and color-coded game markers all came up.</p><span class="q">Show each fix on real surfaces such as forms, charts and game tiles.</span></div>
+    </div>
+    <p class="body rv" style="margin-top:30px">The discussions pointed the same way. Organizations and businesses in India and other countries often ignore these difficulties, and designers need to understand them before they can design for them.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">04 · The proposal</div>
+    <h2 class="sec rv">A design guide for inclusive visual media.</h2>
+    <p class="body rv">I proposed a guide that designers and advertisers could use in their daily work. It explains color blindness and inclusive design, then gives practical advice. A one-page poster presented the proposal, including a color-blind-friendly palette checked in protanope and deuteranope simulations.</p>
+    <h3 class="sub rv">What the guide covers</h3>
+    <div class="chips rv"><span>Inclusive design overview</span><span>Understanding color blindness</span><span>Color contrast</span><span>Alternative visual cues</span><span>Text alternatives</span><span>Keyboard accessibility</span><span>Accessibility testing</span><span>Resources</span></div>
+    <h3 class="sub rv">Its five core rules</h3>
+    <ul class="principles">
+      <li class="rv"><span class="k">01</span><div><b>Don't rely on color alone.</b><span>Pair color with a symbol or text wherever someone's attention is needed, as with an error message.</span></div></li>
+      <li class="rv"><span class="k">02</span><div><b>Keep the palette small.</b><span>Two or three colors leave fewer chances for confusion.</span></div></li>
+      <li class="rv"><span class="k">03</span><div><b>Use patterns and textures.</b><span>Charts stay readable when bars differ by more than color. Where possible, add text too.</span></div></li>
+      <li class="rv"><span class="k">04</span><div><b>Choose contrast with care.</b><span>Pick colors and hues that can be told apart with or without a color vision deficiency.</span></div></li>
+      <li class="rv"><span class="k">05</span><div><b>Avoid risky pairs.</b><span>Green with red, brown, blue, grey or black. Blue with purple or grey. Light green with yellow.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="simulator">
+  <div class="wrap">
+    <div class="sec-num rv">05 · See it yourself</div>
+    <h2 class="sec rv">Switch how you see these examples.</h2>
+    <p class="body rv">Pick a type of color vision and everything in the panels below will change. In each pair, the left side uses color alone and the right side follows the guide.</p>
+
+    <fieldset class="sim-bar" id="sim-bar" style="min-inline-size:0">
+      <legend>Choose a color vision type to simulate</legend>
+      <label><input type="radio" name="vision" id="v-none" value="none" checked /><span>Typical vision<small>No filter</small></span></label>
+      <label><input type="radio" name="vision" id="v-p" value="p" /><span>Protanopia<small>Red-blind</small></span></label>
+      <label><input type="radio" name="vision" id="v-d" value="d" /><span>Deuteranopia<small>Green-blind</small></span></label>
+      <label><input type="radio" name="vision" id="v-t" value="t" /><span>Tritanopia<small>Blue-blind</small></span></label>
+      <label><input type="radio" name="vision" id="v-m" value="m" /><span>Monochromacy<small>No color</small></span></label>
+    </fieldset>
+    <p class="sim-status" id="sim-status" role="status">Showing typical color vision.</p>
+
+    <div class="sim-stage" id="sim-stage">
+      <div class="panel">
+        <h3>Which field has the error?</h3>
+        <p>Rule 1: don't rely on color alone.</p>
+        <div class="pair">
+          <div><span class="tag">COLOR ONLY</span>
+            <div class="field bad">Card number</div>
+            <div class="field good">Name on card</div>
+          </div>
+          <div><span class="tag">COLOR + SYMBOL + TEXT</span>
+            <div class="field bad"><i aria-hidden="true">✕</i>Card number</div>
+            <div class="msg">Enter all 16 digits</div>
+            <div class="field good"><i aria-hidden="true">✓</i>Name on card</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Which bar is which?</h3>
+        <p>Rule 3: use patterns and textures. Sample data.</p>
+        <div class="pair">
+          <div><span class="tag">COLOR ONLY</span>
+            <div class="bars" role="img" aria-label="Sample bar chart using red and green bars with no other difference">
+              <div class="g"><u class="a" style="height:55%"></u><u class="b" style="height:80%"></u></div>
+              <div class="g"><u class="a" style="height:90%"></u><u class="b" style="height:60%"></u></div>
+              <div class="g"><u class="a" style="height:40%"></u><u class="b" style="height:70%"></u></div>
+            </div>
+            <div class="key"><span><b></b>Ad A</span><span><b class="k2"></b>Ad B</span></div>
+          </div>
+          <div class="patterned"><span class="tag">COLOR + PATTERN</span>
+            <div class="bars" role="img" aria-label="The same sample chart, with one series striped so the bars differ by more than color">
+              <div class="g"><u class="a" style="height:55%"></u><u class="b" style="height:80%"></u></div>
+              <div class="g"><u class="a" style="height:90%"></u><u class="b" style="height:60%"></u></div>
+              <div class="g"><u class="a" style="height:40%"></u><u class="b" style="height:70%"></u></div>
+            </div>
+            <div class="key"><span><b></b>Ad A</span><span><b class="k2"></b>Ad B</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>The eight risky pairs</h3>
+        <p>Rule 5: try each view and see which pairs start to merge.</p>
+        <div class="combos">
+          <div><i><u style="background:#2e9e3f"></u><u style="background:#d6322c"></u></i>Green &amp; red</div>
+          <div><i><u style="background:#2e9e3f"></u><u style="background:#8a5a2b"></u></i>Green &amp; brown</div>
+          <div><i><u style="background:#2e9e3f"></u><u style="background:#2f6fde"></u></i>Green &amp; blue</div>
+          <div><i><u style="background:#2e9e3f"></u><u style="background:#8c8c8c"></u></i>Green &amp; grey</div>
+          <div><i><u style="background:#2e9e3f"></u><u style="background:#17171f"></u></i>Green &amp; black</div>
+          <div><i><u style="background:#2f6fde"></u><u style="background:#7d3cc8"></u></i>Blue &amp; purple</div>
+          <div><i><u style="background:#2f6fde"></u><u style="background:#8c8c8c"></u></i>Blue &amp; grey</div>
+          <div><i><u style="background:#b6e36a"></u><u style="background:#f5e642"></u></i>Light green &amp; yellow</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>The palette from my study</h3>
+        <p>Blues, oranges and greys that stay apart in the red-green views.</p>
+        <div class="swatches" role="img" aria-label="Ten palette swatches in rust, grey, light blue, peach, pale grey, blue, orange, warm grey, charcoal and sky blue">
+          <i style="background:#cb5724"></i><i style="background:#8e8c8f"></i><i style="background:#abccee"></i><i style="background:#febd7b"></i><i style="background:#d7d5d8"></i>
+          <i style="background:#116dac"></i><i style="background:#f67e1d"></i><i style="background:#b4afb3"></i><i style="background:#5b5b5b"></i><i style="background:#64a0d2"></i>
+        </div>
+      </div>
+    </div>
+    <p class="sim-note">These views use the Machado, Oliveira and Fernandes (2009) simulation model. They are approximations, and color vision differs from person to person.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num rv">06 · Reflection</div>
+    <h2 class="sec rv">The fix belongs in the default design.</h2>
+    <blockquote class="pull rv">“Colorblindness in my case is very normal now.”<cite>STUDY PARTICIPANT</cite></blockquote>
+    <p class="body rv" style="margin-top:24px">The people in this study treat color blindness as an ordinary part of life. That's why I don't see accessible color as a special mode. A second signal, clearer contrast or a pattern on a chart can sit inside the main design, and the design doesn't have to look worse for it.</p>
+    <p class="body rv">The same thinking shows up in my <a href="https://raja12manna-crypto.github.io/canarabank/case-study.html">Canara ai1 redesign</a>, where I lifted contrast from 1.37:1 to 5.98:1. If I took this study further, I'd test the guide with working designers and measure whether it changes what they make.</p>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <div class="kicker rv">Building for more people?</div>
+    <h2 class="rv">Let's find out who your design is leaving out.</h2>
+    <div class="btn-row rv">
+      <a class="btn btn-primary" href="mailto:raja12manna@gmail.com?subject=About%20your%20color%20blindness%20research">raja12manna@gmail.com →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/anubhav-manna-069419177" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="next rv">
+      <a href="https://raja12manna-crypto.github.io/canarabank/case-study.html"><span>Related case study</span><b>Canara ai1 — making a bank transfer simple again</b></a>
+      <a href="anarix.html"><span>Next case study</span><b>Designing a product that AI runs</b></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>© 2026 Anubhaveshwar Manna</span><a href="../">Back to portfolio ↑</a></footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Machado et al. (2009), severity 1.0, applied in linear RGB -->
+    <filter id="cvd-p" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-d" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.01182 0.04294 0.968881 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-t" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.3039 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-m" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/></filter>
+  </defs>
+</svg>
+
+<script src="case.js"></script>
+<script>
+(function(){
+  var stage=document.getElementById('sim-stage'),status=document.getElementById('sim-status');
+  var text={none:'Showing typical color vision.',p:'Simulating protanopia. Reds look darker and move toward olive.',d:'Simulating deuteranopia. Reds and greens move toward similar olive tones.',t:'Simulating tritanopia. Blues and greens become harder to tell apart.',m:'Simulating monochromacy. Only lightness is left.'};
+  document.getElementById('sim-bar').addEventListener('change',function(e){
+    var v=e.target.value;
+    stage.style.filter=v==='none'?'none':'url(#cvd-'+v+')';
+    status.textContent=text[v];
+  });
+})();
+</script>
+</body>
+</html>

@@ -815,7 +815,7 @@ const hoverable=matchMedia('(hover:hover)').matches;
 (function(){
   const links=[...document.querySelectorAll('.side-nav a')];const map={};links.forEach(l=>map[l.dataset.sec]=l);
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));(map[e.target.id]||{classList:{add(){}}}).classList.add('active');}});},{rootMargin:'-45% 0px -45% 0px'});
-  ['top','about','work','experience','beyond','skills','contact'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+  ['top','about','work','process','experience','beyond','skills','contact'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
 })();
 
 addEventListener('load',()=>{

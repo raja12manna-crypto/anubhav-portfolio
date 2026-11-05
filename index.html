@@ -288,6 +288,13 @@
   .mini span{display:block;font-size:12.5px;color:var(--mute);margin-top:3px;line-height:1.45}
   .mini small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-top:6px}
 
+  /* testimonials */
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .quote{border:1px solid var(--line);border-radius:18px;padding:28px 26px;background:var(--card)}
+  .quote p{font-family:var(--serif);font-size:1.25rem;line-height:1.4;letter-spacing:-.01em;color:var(--fg)}
+  .quote p::before{content:'“';color:var(--accent);margin-right:2px}.quote p::after{content:'”';color:var(--accent)}
+  .quote .who{margin-top:18px;font-size:13px;color:var(--mute)}.quote .who b{display:block;color:var(--fg);font-weight:500;font-size:14px}
+
   /* contact extras */
   .contact-sub{margin:22px auto 0;max-width:520px;font-size:15px;line-height:1.6;color:var(--mute)}
   .contact-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px}
@@ -404,6 +411,7 @@
     <a href="#work" data-hover>Work</a>
     <a href="#experience" data-hover>Experience</a>
     <a href="#contact" data-hover>Contact</a>
+    <a href="Anubhaveshwar_Manna_CV.pdf" target="_blank" rel="noopener" data-hover>CV ↓</a>
   </div>
 </nav>
 
@@ -423,6 +431,7 @@
       </p>
       <div class="hero-cta">
         <a href="#work" class="btn btn-primary" data-hover>View case studies <span class="arw">↓</span></a>
+        <a href="Anubhaveshwar_Manna_CV.pdf" class="btn btn-ghost" download data-hover>Download CV <span class="arw">↓</span></a>
         <a href="#contact" class="btn btn-ghost" data-hover>Get in touch <span class="arw">→</span></a>
       </div>
     </div>
@@ -630,12 +639,24 @@
   </div>
 </section>
 
+<!-- ===== KIND WORDS (testimonials) =====
+     Hidden until you add quotes. To show it: add entries to AM_TESTIMONIALS in the script near the bottom of this file, e.g.
+     {quote:"Anubhav turned our messiest workflow into something sellers loved.", name:"Full Name", role:"Product Manager, Company"}
+-->
+<section class="section" id="kind-words" data-theme="light" hidden>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title">Kind words</h2></div>
+    <div class="quotes" id="quotes"></div>
+  </div>
+</section>
+
 <section class="section contact" id="contact" data-theme="light">
   <div class="wrap">
     <p class="contact-head reveal">Open to the <em>right</em> opportunity.</p>
     <p class="contact-sub reveal" data-d="1">Senior UX, Product and UI/UX design roles — based in Bengaluru, happy to relocate within India or abroad.</p>
     <div class="contact-actions reveal" data-d="1">
       <a href="mailto:raja12manna@gmail.com" class="mail-btn" data-hover>raja12manna@gmail.com <span>→</span></a>
+      <a href="Anubhaveshwar_Manna_CV.pdf" class="mail-btn" download data-hover>Download CV <span>↓</span></a>
       <button type="button" class="ask-btn" id="askFromContact" data-hover><span class="am-orb" aria-hidden="true"></span>Ask my assistant</button>
     </div>
     <div class="socials reveal" data-d="2">
@@ -676,6 +697,15 @@
 </div>
 
 <script>
+/* Testimonials — add quotes here to show the "Kind words" section (leave empty to keep it hidden). */
+const AM_TESTIMONIALS=[
+  // {quote:"…", name:"Full Name", role:"Role, Company"},
+];
+(function(){if(!AM_TESTIMONIALS.length)return;const sec=document.getElementById('kind-words'),box=document.getElementById('quotes');
+  AM_TESTIMONIALS.forEach(t=>{const d=document.createElement('figure');d.className='quote reveal';
+    const p=document.createElement('p');p.textContent=t.quote;const w=document.createElement('figcaption');w.className='who';
+    const b=document.createElement('b');b.textContent=t.name;w.appendChild(b);w.appendChild(document.createTextNode(t.role||''));
+    d.appendChild(p);d.appendChild(w);box.appendChild(d);});sec.hidden=false;})();
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const hoverable=matchMedia('(hover:hover)').matches;
 
@@ -1096,7 +1126,7 @@ const AM_KB=[
 {id:'resume',
  k:['resume','cv','curriculum vitae','biodata','download','pdf'],
  q:['can i get his resume','where is his cv','download cv'],
- a:`He shares his latest CV on request — ${MAIL('CV request','email him')} or message him on ${L(AM_LINKS.linkedin,'LinkedIn')} and he'll send it over.`,
+ a:`You can ${L('Anubhaveshwar_Manna_CV.pdf','<b>download his CV (PDF)</b>')} right here. For anything else, ${MAIL('Hello Anubhav','email him')}.`,
  next:['contact','experience']},
 
 {id:'freelance',

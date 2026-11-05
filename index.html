@@ -227,9 +227,11 @@
   @keyframes marq{to{transform:translateX(-50%)}}
 
   /* process */
-  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px);counter-reset:step}
-  @media(max-width:980px){.process{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.process{grid-template-columns:1fr}}
+  .process{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,2vw,22px);list-style:none}
+  .process .step{grid-column:span 2;display:flex;flex-direction:column}
+  .process .step:nth-child(n+4){grid-column:span 3}
+  @media(max-width:980px){.process{grid-template-columns:1fr 1fr}.process .step,.process .step:nth-child(n+4){grid-column:auto}.process .step:last-child{grid-column:1/-1}}
+  @media(max-width:560px){.process{grid-template-columns:1fr}.process .step:last-child{grid-column:auto}}
   .step{position:relative;border:1px solid var(--line);border-radius:18px;padding:28px 24px 30px;background:var(--card);overflow:hidden;
         transition:transform .45s var(--ease),border-color .45s var(--ease)}
   .step::before{content:'';position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .6s var(--ease)}
@@ -238,6 +240,9 @@
   .step-n{font-family:var(--mono);font-size:12px;color:var(--accent-text);letter-spacing:1px}
   .step h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;letter-spacing:-.01em;margin:18px 0 10px;color:var(--fg)}
   .step p{font-size:14px;line-height:1.6;color:var(--mute)}
+  .step .step-proof{margin-top:auto;padding-top:16px;font-size:13px;line-height:1.55}
+  .step .step-proof span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px}
+  .step .step-proof a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--accent-text);text-underline-offset:3px}
   .step ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
   .step li{font-family:var(--mono);font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:var(--fg);opacity:.75;border:1px solid var(--line);border-radius:100px;padding:4px 9px}
   .sec-lead{font-size:15px;line-height:1.7;color:var(--mute);max-width:620px;margin:-28px 0 48px}
@@ -405,6 +410,7 @@
   <a href="#top" data-sec="top"><span class="txt">Intro</span><span class="tick"></span></a>
   <a href="#about" data-sec="about"><span class="txt">About</span><span class="tick"></span></a>
   <a href="#work" data-sec="work"><span class="txt">Work</span><span class="tick"></span></a>
+  <a href="#process" data-sec="process"><span class="txt">Process</span><span class="tick"></span></a>
   <a href="#experience" data-sec="experience"><span class="txt">Experience</span><span class="tick"></span></a>
   <a href="#beyond" data-sec="beyond"><span class="txt">Playground</span><span class="tick"></span></a>
   <a href="#skills" data-sec="skills"><span class="txt">Skills</span><span class="tick"></span></a>
@@ -416,6 +422,7 @@
   <div class="nav-links">
     <a href="#about" data-hover>About</a>
     <a href="#work" data-hover>Work</a>
+    <a href="#process" data-hover>Process</a>
     <a href="#experience" data-hover>Experience</a>
     <a href="#contact" data-hover>Contact</a>
     <a href="Anubhaveshwar_Manna_CV.pdf" target="_blank" rel="noopener" data-hover>CV ↓</a>
@@ -466,7 +473,7 @@
           <div class="stat reveal" data-d="1"><div class="n" data-count="6" data-suffix="+">0</div><div class="l">Years in design</div></div>
           <div class="stat reveal" data-d="1"><div class="n" data-count="3.6">0</div><div class="l">Years as designer / design lead</div></div>
           <div class="stat reveal" data-d="2"><div class="n" data-count="2.6">0</div><div class="l">Years in product / UX</div></div>
-          <div class="stat reveal" data-d="3"><div class="n" data-count="30" data-suffix="%">0</div><div class="l">Faster task completion</div></div>
+          <div class="stat reveal" data-d="3"><div class="n" data-count="2">0</div><div class="l">Years in AI-native B2B SaaS</div></div>
         </div>
       </div>
       <div class="about-body reveal" data-d="1">
@@ -531,14 +538,58 @@
   </div>
 </section>
 
+<section class="section" id="process" data-theme="dark">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">How I work</h2></div>
+    <p class="sec-lead reveal">My recent product work is under NDA, so here is how I work, with proof you can open.</p>
+    <ol class="process">
+      <li class="step reveal" data-d="1">
+        <span class="step-n">01</span>
+        <h3>Start with the real work</h3>
+        <p>I meet the people doing the job before I design anything. When what I find disagrees with my idea, the idea changes.</p>
+        <p class="step-proof"><span>Proof</span>Field research with drone operators at ideaForge · Kanchipuram fieldwork that changed my research thesis · <a href="https://raja12manna-crypto.github.io/canarabank/case-study.html" data-hover>Canara: 54 surveys, 6 interviews</a></p>
+      </li>
+      <li class="step reveal" data-d="2">
+        <span class="step-n">02</span>
+        <h3>Find the decision</h3>
+        <p>Complex products show more than anyone can read. I work out the decision a person has to make, then build the screen around it.</p>
+        <p class="step-proof"><span>Proof</span><a href="work/anarix.html" data-hover>Anarix: lead with the decision</a> · <a href="https://raja12manna-crypto.github.io/missionassurance/case-study.html" data-hover>Mission Assurance: one health score</a></p>
+      </li>
+      <li class="step reveal" data-d="3">
+        <span class="step-n">03</span>
+        <h3>Split the work between AI and people</h3>
+        <p>I decide what AI can do alone and what needs a person's yes. Anything that changes money or live work waits for approval.</p>
+        <p class="step-proof"><span>Proof</span><a href="work/anarix.html" data-hover>Anarix: AI proposes, people decide</a> · <a href="work/oliv.html" data-hover>Oliv: people write the extremes, AI drafts the middle</a></p>
+      </li>
+      <li class="step reveal" data-d="1">
+        <span class="step-n">04</span>
+        <h3>Design every state</h3>
+        <p>Empty screens, low confidence, wrong answers, two people editing at once. I design these as carefully as the main flow, because that's where trust is won or lost.</p>
+        <p class="step-proof"><span>Proof</span><a href="work/oliv.html#states" data-hover>15 designed states in Oliv Coach</a></p>
+      </li>
+      <li class="step reveal" data-d="2">
+        <span class="step-n">05</span>
+        <h3>Build it and test it</h3>
+        <p>I prototype early, often in code, and test with users before release. What works goes into the design system.</p>
+        <p class="step-proof"><span>Proof</span><a href="work/oliv-prototype/#part-a" data-hover>Working Oliv prototype</a> · <a href="work/anarix.html" data-hover>Usability testing and design system at Anarix</a></p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <section class="section" id="experience" data-theme="dark">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">Where I've built things</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Where I've built things</h2></div>
     <div class="exp">
+      <div class="exp-item reveal">
+        <div class="exp-when">Aug 2026 — Present</div>
+        <div><div class="exp-role">Co-founder, Researcher, Director &amp; Cinematographer</div><div class="exp-co">Asian Craft &amp; Research Council · India</div>
+        <p class="exp-desc">Helping build a not-for-profit that documents handmade crafts across Asia. I work directly with artisans, write our research papers, script, direct and shoot our documentaries, and guide the design and content of our website.</p></div>
+      </div>
       <div class="exp-item reveal">
         <div class="exp-when">Aug 2024 — Aug 2026</div>
         <div><div class="exp-role">Product Designer</div><div class="exp-co">Anarix.ai · Bengaluru</div>
-        <p class="exp-desc">Led end-to-end design of a B2B SaaS dashboard for Amazon Marketing Cloud users. Built a scalable Figma design system; reduced task completion time 30%, improved feature adoption 25%, shipped MVP in 3 months.</p></div>
+        <p class="exp-desc">Designed end to end on an AI-native B2B SaaS product for marketplace sellers, from problem framing with product and engineering to usability testing. Turned AI output into actions people could review and approve, and built and maintained the Figma design system.</p></div>
       </div>
       <div class="exp-item reveal">
         <div class="exp-when">Jul 2024 — Aug 2024</div>
@@ -581,7 +632,7 @@
 
 <section class="section" id="beyond" data-theme="mid">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Playground &amp; side projects</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">Playground &amp; side projects</h2></div>
     <p class="sec-lead reveal">Self-initiated work — where research, storytelling and play meet. Personal projects, labelled as such.</p>
     <div class="beyond">
       <article class="b-card b-craft reveal">
@@ -611,8 +662,9 @@
 
 <section class="section" id="skills" data-theme="light">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">What I work with</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title">What I work with</h2></div>
     <div class="skills-cloud reveal" id="cloud">
+      <span class="chip" data-w="1">AI Product Design</span>
       <span class="chip" data-w="1">Product Design</span>
       <span class="chip" data-w="1">UX Research</span>
       <span class="chip">Interaction Design</span>
@@ -641,7 +693,6 @@
       <span class="chip">Prompt Engineering</span>
       <span class="chip">Video Editing</span>
       <span class="chip">Sound Design</span>
-      <span class="chip" data-w="1">AI Product Design</span>
     </div>
   </div>
 </section>
@@ -652,7 +703,7 @@
 -->
 <section class="section" id="kind-words" data-theme="light" hidden>
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title">Kind words</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">07</span><h2 class="sec-title">Kind words</h2></div>
     <div class="quotes" id="quotes"></div>
   </div>
 </section>
@@ -910,7 +961,7 @@ const AM_KB=[
 {id:'salary',
  k:['salary','ctc','compensation','pay','package','lpa','lakh','expected','expectation','rate','money','budget','charges','fee'],
  q:['what is his expected salary','what ctc does he expect','what are his salary expectations'],
- a:`His expected compensation starts from <b>₹12 LPA</b>, depending on the role, scope and location. He's happy to discuss specifics directly — ${MAIL('Role and compensation','email him')}.`,
+ a:`That depends on the role, scope and location, and he's happy to discuss it directly — ${MAIL('Role and compensation','email him')}.`,
  next:['notice','contact']},
 
 {id:'notice',
@@ -925,6 +976,7 @@ const AM_KB=[
  q:['what is his work experience','where has he worked','how many years of experience does he have','show his career timeline'],
  a:`<b>6+ years</b> total (3.6 years designer / design lead + 2.6 years product / UX):
  <ul>
+ <li><b>Co-founder, Researcher, Director &amp; Cinematographer</b> — Asian Craft &amp; Research Council · Aug 2026 – Present</li>
  <li><b>Product Designer</b> — Anarix.ai, Bengaluru · Aug 2024 – Aug 2026</li>
  <li><b>UX / Product Design Intern</b> — Pepper Square · Jul – Aug 2024</li>
  <li><b>UX Designer &amp; Researcher</b> (grad project) — ideaForge · Jan – Jun 2024</li>
@@ -936,14 +988,13 @@ const AM_KB=[
  next:['anarix','ideaforge','education']},
 
 {id:'anarix',
- k:['anarix','anarix ai','last job','last company','recent job','most recent','saas','b2b','amazon','walmart','marketplace','amazon marketing cloud','amc','dashboard','enterprise'],
+ k:['anarix','anarix ai','last job','last company','recent job','most recent','saas','b2b','amazon','walmart','marketplace','dashboard','enterprise'],
  q:['what did he do at anarix','tell me about his last job','what was his work at anarix'],
  a:`<b>Product Designer at Anarix.ai</b>, Bengaluru (Aug 2024 – Aug 2026) — an AI-native B2B SaaS company serving marketplace sellers.
- <ul><li>Led end-to-end design of a <b>B2B enterprise dashboard</b> for Amazon Marketing Cloud users</li>
- <li>Built a scalable <b>Figma design system</b> and ran usability testing</li>
- <li>Designed AI-driven product experiences as the company moved toward an AI-first product</li>
- <li>Impact: <b>30% faster</b> task completion, <b>25%</b> higher feature adoption, MVP shipped in <b>3 months</b></li></ul>
- Because of an NDA he can't show screens or product details, but his ${L('work/anarix.html','process case study')} covers the problems, decisions and AI-design principles — and he's glad to go deeper in an interview.`,
+ <ul><li>Designed AI-driven product experiences as the company moved toward an AI-first product</li>
+ <li>Turned AI output into actions people could <b>review, adjust and approve</b></li>
+ <li>Built and maintained a scalable <b>Figma design system</b> and ran usability testing</li></ul>
+ Because of an NDA he can't show screens, product details or numbers, but his ${L('work/anarix.html','process case study')} covers the problems, decisions and AI-design principles — and he's glad to go deeper in an interview.`,
  next:['ai','oliv','designsystem']},
 
 {id:'pepper',
@@ -996,7 +1047,7 @@ const AM_KB=[
 {id:'award',
  k:['award','awards','achievement','achievements','won','winner','competition','prize','recognition','ifp','poster'],
  q:['has he won any awards','what are his achievements'],
- a:`🏆 <b>Winner, IFP Poster Design Crossover Competition</b> (2021). On the product side, his work at Anarix.ai delivered 30% faster task completion and 25% higher feature adoption.`,
+ a:`🏆 <b>Winner, IFP Poster Design Crossover Competition</b> (2021).`,
  next:['projects','education']},
 
 /* ---------- projects ---------- */
@@ -1086,7 +1137,7 @@ const AM_KB=[
 {id:'designsystem',
  k:['design system','design systems','components','component library','tokens','ui kit','style guide','scalable'],
  q:['has he built a design system','does he have design system experience'],
- a:`Yes — at Anarix.ai he <b>built and owned a scalable Figma design system</b> for an enterprise B2B dashboard, which helped the team ship an MVP in 3 months. His Mission Assurance concept also includes its own design system.`,
+ a:`Yes — at Anarix.ai he <b>built and owned a scalable Figma design system</b> for an AI-native B2B product. His Mission Assurance concept also includes its own design system.`,
  next:['anarix','skills']},
 
 {id:'branding',
@@ -1098,7 +1149,7 @@ const AM_KB=[
 {id:'process',
  k:['process','approach','how does he work','methodology','workflow','philosophy','design thinking','why before how','way of working'],
  q:['what is his design process','how does he approach a problem','what is his design philosophy'],
- a:`He asks <b>why before how</b>. A typical arc: research the real problem (field visits, interviews, data) → define the strategy and success metrics → build the system (IA, flows, design system) → prototype and test with users → iterate. His ${L('https://raja12manna-crypto.github.io/missionassurance/','Mission Assurance')} case study shows that whole arc end to end.`,
+ a:`He asks <b>why before how</b>. His five steps: start with the real work → find the decision → split the work between AI and people → design every state → build it and test it. The <a href="#process">How I work</a> section shows proof for each step.`,
  next:['research','projects']},
 
 {id:'why',
@@ -1108,7 +1159,7 @@ const AM_KB=[
  <ul><li><b>Craft + product in one person</b> — 3.6 years of visual, brand and motion design behind 2.6 years of product and UX, so his work is both well-reasoned and well-made.</li>
  <li><b>Research-led</b> — field studies with drone operators, B2B research at Bosch, and ongoing ethnographic work with artisans.</li>
  <li><b>AI-native product experience</b> — two years designing for an AI-first B2B SaaS product.</li>
- <li><b>Systems thinking</b> — built a design system and shipped an enterprise MVP in 3 months, with 30% faster task completion.</li>
+ <li><b>Systems thinking</b> — built and maintained the design system for an AI-native B2B product that was changing every sprint.</li>
  <li><b>He builds</b> — playable games, interactive prototypes and documentaries.</li></ul>`,
  next:['projects','ai','contact']},
 

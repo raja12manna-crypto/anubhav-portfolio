@@ -14,6 +14,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="case.css" />
+<style>
+  .loop{margin-top:34px;border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);background:var(--card)}
+  .loop-label{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+  .loop-row{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .loop-row+.loop-label{margin-top:22px}
+  .loop-node{position:relative;border-radius:14px;padding:14px 15px 15px}
+  .loop-node b{display:block;font-weight:500;font-size:14.5px;color:var(--fg);margin-bottom:4px}
+  .loop-node span{display:block;font-size:13px;line-height:1.5;color:var(--mute)}
+  .loop-main .loop-node{border:1px solid rgba(169,159,255,.5);background:rgba(109,92,255,.12)}
+  .loop-main .loop-node:not(:last-child)::after{content:'→';position:absolute;right:-21px;top:50%;transform:translateY(-50%);color:var(--accent-text);font-size:15px}
+  .loop-edge .loop-node{border:1px dashed rgba(255,182,0,.42);background:rgba(255,182,0,.05)}
+  .loop-cap{margin-top:16px;font-size:13px;color:var(--mute)}
+  @media(max-width:760px){
+    .loop-row{grid-template-columns:1fr;gap:24px}
+    .loop-main .loop-node:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-22px;transform:translateX(-50%)}
+    .loop-edge{gap:10px}
+  }
+</style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -64,6 +82,23 @@
   <div class="wrap">
     <div class="sec-num rv">03 · Principles</div>
     <h2 class="sec rv">How I designed AI people could rely on.</h2>
+    <figure class="loop rv">
+      <div class="loop-label">When it goes to plan</div>
+      <div class="loop-row loop-main">
+        <div class="loop-node"><b>AI proposes</b><span>A draft, with the reason behind it</span></div>
+        <div class="loop-node"><b>Person reviews</b><span>Checks it and adjusts what's needed</span></div>
+        <div class="loop-node"><b>Person approves</b><span>Nothing runs before a yes</span></div>
+        <div class="loop-node"><b>It runs</b><span>The result is shown, with a way to undo</span></div>
+      </div>
+      <div class="loop-label">When it doesn't</div>
+      <div class="loop-row loop-edge">
+        <div class="loop-node"><b>AI is unsure</b><span>It asks instead of guessing</span></div>
+        <div class="loop-node"><b>Draft is close</b><span>The person edits it and doesn't restart</span></div>
+        <div class="loop-node"><b>Person says no</b><span>Nothing changes</span></div>
+        <div class="loop-node"><b>Something fails</b><span>It says what happened and offers a way back</span></div>
+      </div>
+      <figcaption class="loop-cap">A general pattern drawn for this page. It isn't a screen or flow from the product.</figcaption>
+    </figure>
     <ul class="principles">
       <li class="rv"><span class="k">01</span><div><b>AI proposes, people decide.</b><span>Anything that changes money, budgets or live listings waits for a human yes — with a clear way to adjust it first.</span></div></li>
       <li class="rv"><span class="k">02</span><div><b>Show the why, not just the what.</b><span>Every recommendation carries the reason behind it, so a manager can judge it in seconds instead of trusting blindly.</span></div></li>
